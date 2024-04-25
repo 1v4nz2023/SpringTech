@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>SpringTech</title>
 </head>
 <body>
+<h1>Lista de usuarios</h1>
+
+<table border="3">
+<thead>
+<tr>
+	<th>USERID</th>
+	<th>NOMBRES</th>
+	<th>APELLIDOS</th>
+	<th>DNI</th>
+	<th>EMAIL</th>
+	<th>CONTRASEÑA</th>		
+</tr>
+
+<tbody>
+<tr th:each="objUser : ${listaU}">
+	<td th:text="U00 + ${objUser.user_id}"></td>
+	<td th:text="${objUser.nombres}"></td>
+	<td th:text="${objUser.apellidos}"></td>
+	<td th:text="${objUser.dni}"></td>
+	<td th:text="${objUser.email}"></td>
+	<td th:text="${objUser.pass}"></td>
+	
+</tr>
+</tbody>
+
+</table>
+
+
+
+
+
+
+<a th:href="@{/registro}">Registrar</a>
 
 </body>
 </html>
