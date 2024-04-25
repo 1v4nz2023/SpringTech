@@ -6,8 +6,27 @@
 </head>
 <body>
 <h1 th:text="${titulo}"></h1>
-<h2>GAA</h2>
-<a th:href="@{/}">Volver</a>
+
+  <form th:action="@{/registrar}" th:object="${usuario}" th:method=post>
+    <label for="nombres">Nombres:</label><br>
+    <input type="text" id="nombres" name="nombres" required><br><br>
+    
+    <label for="apellidos">Apellidos:</label><br>
+    <input type="text" id="apellidos" name="apellidos" required><br><br>
+    
+    <label for="dni">DNI:</label><br>
+    <input type="number" id="dni" name="dni" required><br><br>
+    
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="contrasena">Contraseña:</label><br>
+    <input type="password" id="contrasena" name="contrasena" required><br><br>
+    
+    <input type="submit" value="Registrarse" name="btnRegistrar">
+  </form>
+<a th:href="@{/}">Volver al inicio</a>
+
 
 </body>
 </html>
