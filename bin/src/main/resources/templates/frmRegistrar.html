@@ -6,8 +6,6 @@
 </head>
 <body>
 <h1 th:text="${titulo}"></h1>
-<<<<<<< Updated upstream
-=======
   <form th:action="@{/registrar}" th:object="${usuario}" th:method=post>
     <label for="nombres">Nombres:</label><br>
     <input type="text" id="nombres" name="nombres" required><br><br>
@@ -26,7 +24,6 @@
     
     <input type="submit" value="Registrarse" name="btnRegistrar">
   </form>
->>>>>>> Stashed changes
 <a th:href="@{/}">Volver</a>
 
 </body>
