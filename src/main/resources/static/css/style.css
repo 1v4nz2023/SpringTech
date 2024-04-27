@@ -67,7 +67,24 @@ align-items: center;
 	color: white;
 }
 
+.image-shadow {
+    box-shadow: 0 4px 8px rgba(46, 45, 45, 0.502); /* Ajusta el valor según tu preferencia */
+    transition: box-shadow 0.3s ease; /* Agrega una transición suave */
+}
+.image-opaque {
+    opacity: 0.8; /* Ajusta el valor según tu preferencia */
+    transition: opacity 0.3s ease; /* Agrega una transición suave */
+}
 
+.seemore{
+	color: black;
+}
+
+.seemore:hover{
+    text-decoration: none;
+	font-weight: bold;
+    color: green;
+}
 
 /* Mediaquery */
 @media (max-width: 991px) {
