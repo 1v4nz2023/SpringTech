@@ -34,10 +34,6 @@ body{
 	color: green;
 }
 
-h1{
-	color:red;
-}
-
 
 /*NAV*/
 .nav-link{
@@ -62,6 +58,8 @@ align-items: center;
 	margin: 10px;
 }
 
+
+
 .logo-text{
 	text-decoration: none;
 	color: white;
@@ -85,6 +83,17 @@ align-items: center;
 	font-weight: bold;
     color: green;
 }
+
+
+/*Footer*/
+
+.text-footer{
+	color: white;
+
+}
+
+#map { height: 180px; }
+
 
 /* Mediaquery */
 @media (max-width: 991px) {
