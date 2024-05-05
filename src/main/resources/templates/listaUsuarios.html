@@ -13,9 +13,12 @@
 integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
 crossorigin=""/>
  <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.6/css/dataTables.dataTables.css" />
+<link rel="stylesheet" href="../static/css/responsive.dataTables.min.css">
+
 <title>SpringTech</title>
 </head>
 <body>
@@ -27,7 +30,7 @@ crossorigin=""/>
         <div class="col-md-4">
           <div class="text-center logo-container ">
             <img src="../static/images/logo.png" alt="logo" class="logo-img">
-            <a class="logo-text" href="#">
+            <a class="logo-text" href="./index.html">
               <h3>SpringTech</h3>
             </a>
             </div>
@@ -145,8 +148,8 @@ crossorigin=""/>
 
     <div class="container text-center">
 
-        <table class="table table-striped table-hover table-responsive-md" id="tabla-usuarios">
-            <thead class="table-light">
+        <table class="table table-striped table-hover display responsive nowrap" id="myTable" class="display" style="width:100%">
+            <thead class="table-success">
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">DNI</th>
@@ -154,7 +157,7 @@ crossorigin=""/>
                 <th scope="col">Apellidos</th>
                 <th scope="col">Correo</th>
                 <th scope="col">Rol</th>
-
+                <th scope="col">Acción</th>
               </tr>
             </thead>
             <tbody>
@@ -163,6 +166,15 @@ crossorigin=""/>
 
 
     </div>
+
+    <div id="modal-edicion" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <!-- Aquí puedes agregar cualquier contenido adicional del modal si lo deseas -->
+        </div>
+      </div>
+    </div>
+    
 </section>
 
 
@@ -266,10 +278,12 @@ crossorigin=""/>
 
 </footer>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../static/javascript/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/2.0.6/js/dataTables.js"></script>
+<script src="../static/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="../static/javascript/obtenerusuarios.js"></script>
+<script src="../static/javascript/getandupdateUsuarios.js"></script>
 
 <!-- <a th:href="@{/registro}">Registrar</a> -->
 <!-- <script th:src="@{/javascript/jquery-3.7.1.min.js}"></script>

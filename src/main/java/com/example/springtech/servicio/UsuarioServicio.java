@@ -42,4 +42,17 @@ public class UsuarioServicio implements IUsuarioServicio {
 		usuarioRepositorio.delete(usuario);
 	}
 
+	@Override
+	public boolean existeUsuarioConDni(Integer dni) {
+	    return usuarioRepositorio.existsByDni(dni);
+
+	}
+
+	@Override
+	public boolean existeUsuarioConCorreo(String correo) {
+		// TODO Auto-generated method stub
+		return usuarioRepositorio.existsBycorreo(correo);
+	}
+
+
 }

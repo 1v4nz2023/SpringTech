@@ -15,7 +15,11 @@ public interface IUsuarioServicio {
 	
 	
 	public void eliminarUsuario(Usuario usuario);
-	
+
+	public boolean existeUsuarioConDni(Integer dni);
+
+	public boolean existeUsuarioConCorreo(String correo);
+
 	
 
 }

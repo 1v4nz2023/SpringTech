@@ -27,7 +27,7 @@ crossorigin=""/>
         <div class="col-md-4">
           <div class="text-center logo-container ">
             <img src="../static/images/logo.png" alt="logo" class="logo-img">
-            <a class="logo-text" href="#">
+            <a class="logo-text" href="./index.html">
               <h3>SpringTech</h3>
             </a>
             </div>
@@ -75,7 +75,7 @@ crossorigin=""/>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Inicio</a>
+            <a class="nav-link" href="./index.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Computadoras</a>
@@ -157,29 +157,29 @@ crossorigin=""/>
                 <form id="registroForm">
                     <div class="mb-3">
                         <label for="nombres" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="nombres">
+                        <input type="text" class="form-control" id="nombres" required>
                         <div id="nombres-error" class="invalid-feedback">Ingrese solo letras y espacios.</div>
                     </div>
                     <div class="mb-3">
                         <label for="apellidos" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="apellidos">
+                        <input type="text" class="form-control" id="apellidos" required>
                         <div id="apellidos-error" class="invalid-feedback">Ingrese solo letras y espacios - No tildes.</div>
                     </div>
                     <div class="mb-3">
                         <label for="dni" class="form-label">DNI</label>
-                        <input type="number" class="form-control" id="dni" min="0">
+                        <input type="number" class="form-control" id="dni" min="0" required>
                         <div id="dniError" class="invalid-feedback">El DNI debe contener 8 dígitos.</div>
                     </div>
                                   
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email">
+                        <input type="email" class="form-control" id="email" required>
                         <div id="emailError" class="invalid-feedback">Por favor, introduce una dirección de correo electrónico válida.</div>
                     </div>
                     
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password">
+                        <input type="password" class="form-control" id="password" required>
                         <div id="passError" class="invalid-feedback">Por favor, introduce una contraseña.</div>
 
                     </div>
@@ -303,8 +303,8 @@ crossorigin=""/>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../static/javascript/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="../static/javascript/validarCampos.js"></script>
-<script src="../static/javascript/registrarUsuarios.js"></script>
+<script type="module" src="../static/javascript/validarCampos.js"></script>
+<script type="module" src="../static/javascript/registrarUsuarios.js"></script>
 
 <!-- <a th:href="@{/registro}">Registrar</a> -->
 <!-- <script th:src="@{/javascript/jquery-3.7.1.min.js}"></script>
