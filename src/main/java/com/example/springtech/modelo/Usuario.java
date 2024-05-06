@@ -1,7 +1,5 @@
 package com.example.springtech.modelo;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,7 +19,7 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer idUsuario;
-	Integer dni;
+	String dni;
 	String nombre;
 	String apellidos;
 	String correo;
@@ -33,10 +31,10 @@ public class Usuario {
 	public void setIdUsuario(Integer idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	public Integer getDni() {
+	public String getDni() {
 		return dni;
 	}
-	public void setDni(Integer dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
 	public String getNombre() {
@@ -61,7 +59,7 @@ public class Usuario {
 		return password;
 	}
 	public void setPassword(String password) {
-		this.password = hashPassword(password);
+		this.password = password;
 	}
 	public String getRol() {
 		return rol;
@@ -70,7 +68,7 @@ public class Usuario {
 		this.rol = rol;
 	}
 	
-    private String hashPassword(String password) {
+    /*public String hashPassword(String password) {
         try {
             // Obtener instancia de MessageDigest con algoritmo SHA-256
             MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -91,6 +89,6 @@ public class Usuario {
             e.printStackTrace();
             return null;
         }
-    }
+    }*/
 
 }

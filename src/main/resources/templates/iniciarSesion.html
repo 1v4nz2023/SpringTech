@@ -141,9 +141,9 @@ crossorigin=""/>
 
 
 
-<section id="crearCuenta" class="container text-center my-5">
+<section id="iniciarSesion" class="container text-center my-5">
 
-    <h3 class="text text-success">CREAR UNA CUENTA</h3>
+    <h3 class="text text-success">INICIA SESIÓN</h3>
 
     <div class="container text-center mt-5">
 
@@ -154,12 +154,11 @@ crossorigin=""/>
             </div>
             <div class="col-lg-4 col-md-12 mb-3 p-4 bg-light shadow">
                 <!-- Contenido del formulario -->
-                <form id="loginForm">
+                <form id="loginForm" onsubmit="submitForm(event)">
                                  
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" required>
-                        <div id="emailError" class="invalid-feedback">Por favor, introduce una dirección de correo electrónico válida.</div>
+                        <label for="text" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="user" required>
                     </div>
                     
                     <div class="mb-3">
@@ -291,6 +290,7 @@ crossorigin=""/>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../static/javascript/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../static/javascript/login.js"></script>
 
 
 <!-- <a th:href="@{/registro}">Registrar</a> -->

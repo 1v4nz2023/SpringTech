@@ -1,5 +1,8 @@
 package com.example.springtech.servicio;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +33,15 @@ public class UsuarioServicio implements IUsuarioServicio {
 		
 	}
 
-	@Override
-	public Usuario guardarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return usuarioRepositorio.save(usuario);
-	}
+    @Override
+    public Usuario guardarUsuario(Usuario usuario) {
+        // Encriptar la contraseña antes de guardar el usuario
+        String hashedPassword = hashPassword(usuario.getPassword());
+        usuario.setPassword(hashedPassword);
+        return usuarioRepositorio.save(usuario);
+    }
+
+
 
 	@Override
 	public void eliminarUsuario(Usuario usuario) {
@@ -43,7 +50,7 @@ public class UsuarioServicio implements IUsuarioServicio {
 	}
 
 	@Override
-	public boolean existeUsuarioConDni(Integer dni) {
+	public boolean existeUsuarioConDni(String dni) {
 	    return usuarioRepositorio.existsByDni(dni);
 
 	}
@@ -53,6 +60,42 @@ public class UsuarioServicio implements IUsuarioServicio {
 		// TODO Auto-generated method stub
 		return usuarioRepositorio.existsBycorreo(correo);
 	}
+
+    @Override
+    public Usuario autenticarUsuario(String dni, String password) {
+        Usuario usuario = usuarioRepositorio.findByDni(dni);
+        if (usuario != null) {
+            String hashedPassword = hashPassword(password);
+            if (hashedPassword.equals(usuario.getPassword())) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+
+	@Override
+	public Usuario buscarUsuarioporDNI(String dni) {
+		// TODO Auto-generated method stub
+		Usuario usuario = usuarioRepositorio.findByDni(dni);
+		return usuario;
+			}
+	
+    public String hashPassword(String password) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = digest.digest(password.getBytes());
+            BigInteger hashBigInteger = new BigInteger(1, hashBytes);
+            String hashedPassword = hashBigInteger.toString(16);
+            while (hashedPassword.length() < 64) {
+                hashedPassword = "0" + hashedPassword;
+            }
+            return hashedPassword;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 
 }

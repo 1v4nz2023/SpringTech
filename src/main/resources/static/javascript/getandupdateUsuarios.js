@@ -22,46 +22,33 @@ async function borrarUsuario(idUsuario) {
   
     // Verificar si se obtuvieron los detalles del usuario correctamente
     if (usuario) {
-        try {
-            const response = await fetch(`http://localhost:8090/api/usuarios/${idUsuario}`, {
-                method: 'DELETE'
-            });
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Usuario eliminado exitosamente:', data);
-                // Mostrar alerta de éxito con SweetAlert2
-                Swal.fire({
-                    title: 'Usuario eliminado',
-                    text: 'El usuario ha sido eliminado exitosamente.',
-                    icon: 'success',
-                    confirmButtonText: 'Aceptar'
-                })
-                .then(() => {
-                    location.reload();
-                });
-                // Aquí puedes manejar la respuesta como desees
-            } else {
-                console.error('Error al eliminar el usuario:', response.status);
-                // Mostrar alerta de error con SweetAlert2
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Hubo un error al eliminar el usuario.',
-                    icon: 'error',
-                    confirmButtonText: 'Aceptar'
-                });
-                // Aquí puedes manejar el error de acuerdo a tus necesidades
-            }
-        } catch (error) {
-            console.error('Error al eliminar el usuario:', error);
-            // Mostrar alerta de error con SweetAlert2
-            Swal.fire({
-                title: 'Error',
-                text: 'Hubo un error al eliminar el usuario.',
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            });
-            // Aquí puedes manejar el error en caso de que ocurra una excepción
+      try {
+        const response = await axios.delete(
+          `http://localhost:8090/api/usuarios/${usuario.idUsuario}`
+        );
+        Swal.fire({
+          title: "Eliminación exitosa",
+          text: "Usuario eliminado correctamente",
+          icon: "success",
+        }).then(() => {
+          location.reload();
+      });
+      } catch (error) {
+        console.error(error);
+        if (error.response.status === 404) {
+          Swal.fire({
+            title: "Error",
+            text: error.response.data.message,
+            icon: "error",
+          });
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: "Ocurrió un error al procesar la solicitud",
+            icon: "error",
+          });
         }
+      }
         
     }
   }

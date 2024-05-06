@@ -16,10 +16,14 @@ public interface IUsuarioServicio {
 	
 	public void eliminarUsuario(Usuario usuario);
 
-	public boolean existeUsuarioConDni(Integer dni);
+	public boolean existeUsuarioConDni(String dni);
 
 	public boolean existeUsuarioConCorreo(String correo);
-
 	
+	public Usuario autenticarUsuario(String dni, String password);
+
+	public Usuario buscarUsuarioporDNI(String dni);
+
+	public String hashPassword(String password);
 
 }

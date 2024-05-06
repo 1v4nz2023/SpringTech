@@ -77,7 +77,7 @@ public class UsuarioControlador {
 		usuario.setNombre(usuarioRecibido.getNombre());
 		usuario.setApellidos(usuarioRecibido.getApellidos());
 		usuario.setCorreo(usuarioRecibido.getCorreo());
-		usuario.setPassword(usuarioRecibido.getApellidos());
+		usuario.setPassword(usuarioRecibido.getPassword());
 		usuario.setRol(usuarioRecibido.getRol());
 		usuarioServicio.guardarUsuario(usuario);
 		return ResponseEntity.ok(usuario);
@@ -108,6 +108,32 @@ public class UsuarioControlador {
 		
 		return ResponseEntity.ok(respuesta);
 		
+	}
+	
+	@GetMapping("/user/{dni}")
+	public ResponseEntity<Usuario> obtenerUsuarioPorDni(@PathVariable String dni){
+		Usuario usuario = usuarioServicio.buscarUsuarioporDNI(dni);
+		if(usuario == null)
+			throw new RecursoNoEncontradoExcepcion("No se encontro el id:" + dni);
+		return ResponseEntity.ok(usuario);
+	}
+	
+	@PostMapping("/login")
+	public ResponseEntity<Map<String, Object>> iniciarSesion(@RequestBody Usuario usuario) {
+	    String dni = usuario.getDni();
+	    String password = usuario.getPassword();
+	    Usuario usuarioAutenticado = usuarioServicio.autenticarUsuario(dni, password);
+	    if (usuarioAutenticado == null) {
+	        throw new RecursoNoEncontradoExcepcion("Inicio de Sesión fallido");
+	    }
+
+	    Map<String, Object> response = new HashMap<>();
+	    response.put("idUsuario", usuarioAutenticado.getIdUsuario());
+	    response.put("nombre", usuarioAutenticado.getNombre());
+	    response.put("apellido", usuarioAutenticado.getApellidos());
+	    response.put("rol", usuarioAutenticado.getRol());
+
+	    return ResponseEntity.ok(response);
 	}
 
 }
