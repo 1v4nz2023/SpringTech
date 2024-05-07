@@ -189,7 +189,7 @@ function mostrarModalEdicion(usuario) {
       );
       console.log("Usuario actualizado exitosamente:", response.data);
       Swal.fire({
-        title: "Registro exitoso",
+        title: "Actualización exitosa",
         text: "Usuario actualizado correctamente",
         icon: "success",
       }).then(() => {
