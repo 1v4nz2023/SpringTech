@@ -10,7 +10,7 @@ $(document).ready(function() {
         // Plantilla de cadena con el HTML de la tarjeta
         var cardHtml = `
             <div class="card col-md-2 col-4 mx-1 mt-2" style="width: 15rem" id="card${i}">
-                <a href=""><img src="../static/images/producto1.jpg" class="d-block w-100 card-img-top" alt="Producto ${i}"></a>
+                <a href=""><img src="images/producto1.jpg" class="d-block w-100 card-img-top" alt="Producto ${i}"></a>
                 <div class="card-body">
                     <h6 class="card-title">Product ${i}</h6>
                     <div class="d-flex justify-content-between">
@@ -28,7 +28,7 @@ $(document).ready(function() {
         `;
         var card2Html = `
         <div class="card col-md-2 col-4 mx-1 mt-2" style="width: 15rem" id="card${i+5}">
-            <a href=""><img src="../static/images/producto1.jpg" class="d-block w-100 card-img-top" alt="Producto ${i+5}"></a>
+            <a href=""><img src="images/producto1.jpg" class="d-block w-100 card-img-top" alt="Producto ${i+5}"></a>
             <div class="card-body">
                 <h6 class="card-title">Product ${i+5}</h6>
                 <div class="d-flex justify-content-between">
