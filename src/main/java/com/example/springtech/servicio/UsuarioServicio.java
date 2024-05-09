@@ -35,12 +35,14 @@ public class UsuarioServicio implements IUsuarioServicio {
 
     @Override
     public Usuario guardarUsuario(Usuario usuario) {
-        // Encriptar la contraseña antes de guardar el usuario
-        String hashedPassword = hashPassword(usuario.getPassword());
-        usuario.setPassword(hashedPassword);
+        // Verificar que la contraseña no sea nula antes de calcular su hash
+        if (usuario.getPassword() != null) {
+            // Encriptar la contraseña antes de guardar el usuario
+            String hashedPassword = hashPassword(usuario.getPassword());
+            usuario.setPassword(hashedPassword);
+        }
         return usuarioRepositorio.save(usuario);
     }
-
 
 
 	@Override

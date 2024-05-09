@@ -1,43 +1,46 @@
 function submitForm(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    const user = document.getElementById('user').value;
-    const password = document.getElementById('password').value;
+  const user = document.getElementById("user").value;
+  const password = document.getElementById("password").value;
 
-    const data = {
-        dni: user,
-        password: password
-    };
+  const data = {
+    dni: user,
+    password: password,
+  };
 
-    axios.post('http://localhost:8090/api/login', data)
-        .then(response => {
-            const idUsuario = response.data.idUsuario;
-            console.log(idUsuario);
+  axios
+    .post("http://localhost:8090/api/login", data)
+    .then((response) => {
+      const idUsuario = response.data.idUsuario;
+      console.log(response);
 
-            // Mostrar alerta de éxito con SweetAlert2
-            Swal.fire({
-                icon: 'success',
-                title: 'Inicio de sesión exitoso',
-                text: '¡Bienvenido!',
-                timer: 2000, // Cerrar la alerta después de 2 segundos
-                timerProgressBar: true,
-                showConfirmButton: false
-            });
-            const url = `perfil.html?idUsuario=${idUsuario}`;
-            console.log(url);
+      // Mostrar alerta de éxito con SweetAlert2
+      Swal.fire({
+        icon: "success",
+        title: "Inicio de sesión exitoso",
+        text: "¡Bienvenido!",
+        timer: 1000, // Cerrar la alerta después de 2 segundos
+        timerProgressBar: true,
+        showConfirmButton: false,
+      }).then(() => {
 
-            window.location.href = url;
+        window.location.href= response.data.rol;
 
 
-        })
-        .catch(error => {
-            // Mostrar alerta de error con SweetAlert2
-            Swal.fire({
-                icon: 'error',
-                title: error.response.data.message,
-                text: 'Por favor, verifica tus credenciales e intenta nuevamente.'
-            });
+        localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("nombres", response.data.nombre);
+        localStorage.setItem("apellidos", response.data.apellido);
+      });
+    })
+    .catch((error) => {
+      // Mostrar alerta de error con SweetAlert2
+      Swal.fire({
+        icon: "error",
+        title: error.response.data.message,
+        text: "Por favor, verifica tus credenciales e intenta nuevamente.",
+      });
 
-            // Aquí puedes mostrar un mensaje de error al usuario o realizar otras acciones según sea necesario
-        });
+      // Aquí puedes mostrar un mensaje de error al usuario o realizar otras acciones según sea necesario
+    });
 }

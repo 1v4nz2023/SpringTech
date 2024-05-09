@@ -1,4 +1,4 @@
-package com.example.springtech.apicontrolador;
+package com.example.springtech.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -44,6 +44,17 @@ public class UsuarioControlador {
 	
 	@PostMapping("/usuarios")
 	public Usuario agregarUsuario(@RequestBody Usuario usuario) {
+		
+		if(usuario.getNombre() == null || usuario.getNombre().isEmpty() ||
+				   usuario.getApellidos() == null || usuario.getApellidos().isEmpty() ||
+				   usuario.getDni() == null || usuario.getDni().isEmpty() ||
+				   usuario.getCorreo() == null || usuario.getCorreo().isEmpty() ||
+				   usuario.getPassword() == null || usuario.getPassword().isEmpty()) {
+				    throw new RecursoNoEncontradoExcepcion("No se admiten espacios vacíos");
+				}
+
+		
+		
 	    // Verificar si el DNI está duplicado
 	    if (usuarioServicio.existeUsuarioConDni(usuario.getDni())) {
 	        throw new RecursoNoEncontradoExcepcion("El DNI ya está registrado");

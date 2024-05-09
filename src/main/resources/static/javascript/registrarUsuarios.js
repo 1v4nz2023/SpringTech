@@ -23,13 +23,10 @@ async function registrarUsuario() {
             icon: "success",
             confirmButtonText: 'OK',
 
+        }).then(() => {
+            window.location = "./Login";
         });
 
-        setTimeout(function(){
-            window.location="./index.html";
-
-            
-        }, 600);
     } catch (error) {
         console.error(error);
         if (error.response.status === 404) {
