@@ -25,5 +25,7 @@ public interface IUsuarioServicio {
 	public Usuario buscarUsuarioporDNI(String dni);
 
 	public String hashPassword(String password);
+	
+	
 
 }

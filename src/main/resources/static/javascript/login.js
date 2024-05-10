@@ -19,9 +19,9 @@ function submitForm(event) {
         icon: "success",
         title: "Inicio de sesión exitoso",
         text: "¡Bienvenido!",
-        timer: 1000, // Cerrar la alerta después de 2 segundos
+        // timer: 1000, // Cerrar la alerta después de 2 segundos
         timerProgressBar: true,
-        showConfirmButton: false,
+        showConfirmButton: true,
       }).then(() => {
 
         window.location.href= response.data.ruta;

@@ -12,7 +12,8 @@ $(document).ready(function() {
         $('#listaopciones').addClass('d-block');
         
     } else {
-        listaopciones.hide();
+        $('#listaopciones').removeClass('d-block');
+        $('#listaopciones').addClass('d-none');
         loginBtn.show();
     }
 

@@ -33,16 +33,19 @@ public class UsuarioServicio implements IUsuarioServicio {
 		
 	}
 
-    @Override
-    public Usuario guardarUsuario(Usuario usuario) {
-        // Verificar que la contraseña no sea nula antes de calcular su hash
-        if (usuario.getPassword() != null) {
-            // Encriptar la contraseña antes de guardar el usuario
-            String hashedPassword = hashPassword(usuario.getPassword());
-            usuario.setPassword(hashedPassword);
-        }
-        return usuarioRepositorio.save(usuario);
-    }
+	@Override
+	public Usuario guardarUsuario(Usuario usuario) {
+	    Usuario usuarioExistente = usuarioRepositorio.findById(usuario.getIdUsuario()).orElse(null);
+	    if (usuarioExistente != null) {
+	        // Verificar si la contraseña ha sido modificada
+	        if (!usuario.getPassword().equals(usuarioExistente.getPassword())) {
+	            // Encriptar la nueva contraseña antes de guardar el usuario
+	            String hashedPassword = hashPassword(usuario.getPassword());
+	            usuario.setPassword(hashedPassword);
+	        }
+	    }
+	    return usuarioRepositorio.save(usuario);
+	}
 
 
 	@Override

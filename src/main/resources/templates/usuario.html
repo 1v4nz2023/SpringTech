@@ -152,10 +152,97 @@ crossorigin=""/>
 
 </section>
 
-<section id="userPerfil">
+<section id="userPerfil" class="container text-center">
 
 
-  <h1 th:text="${nombre + ' ' + apellido}"></h1>
+  <h1 th:text="'Bienvenido(a): ' + ${nombre + ' ' + apellido}" class="my-5 text-success"></h1>
+  <span class="d-none" id="idUsuario" th:text="${idUsuario}"></span>
+  
+  <div class="container text-center my-5 align-items-center" >
+    <div class="row align-items-center ">
+      
+      <div class="col align-items-center d-flex justify-content-center my-3">
+        <div class="card" style="width: 18rem;">
+          <div>
+            <img th:src="@{/images/user.png}" class="setimg my-2" alt="userfoto">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Perfil</h5>
+            <p class="card-text">Edita tus datos personales</p>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" id="editar">
+Click aquí</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col align-items-center d-flex justify-content-center my-3">
+        <div class="card" style="width: 18rem;">
+          <div>
+            <img th:src="@{/images/history.png}" class="setimg my-2" alt="userfoto">
+          </div>         
+           <div class="card-body">
+            <h5 class="card-title">Historial</h5>
+            <p class="card-text">Revisa tus compras</p>
+            <a href="#" class="btn btn-success">Click aquí</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="row align-items-center ">
+      
+      <div class="col align-items-center d-flex justify-content-center my-3">
+        <div class="card" style="width: 18rem;">
+          <div>
+            <img th:src="@{/images/warranty.png}" class="setimg my-2" alt="userfoto">
+          </div>
+                    <div class="card-body">
+            <h5 class="card-title">Garantías</h5>
+            <p class="card-text">Seguimiento de tus garantías</p>
+            <a href="#" class="btn btn-success">Click aquí</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col align-items-center d-flex justify-content-center my-3">
+        <div class="card" style="width: 18rem;">
+
+          <div>
+            <img th:src="@{/images/file.png}" class="setimg my-2" alt="userfoto">
+          </div>          <div class="card-body">
+            <h5 class="card-title">Reclamos</h5>
+            <p class="card-text">Inicia un reclamo</p>
+            <a href="#" class="btn btn-success">Click aquí</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+
+  </div>
+
 
 
 </section>
@@ -225,11 +312,10 @@ crossorigin=""/>
 
 </footer>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script th:src="@{/javascript/jquery-3.7.1.min.js}"></script>
 <script th:src="@{/javascript/controladorEstilos.js}"></script>
-
-<script th:src="@{/javascript/controladorEstilos.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script th:src="@{/javascript/auth.js}"></script>
 <script>
   var isLoggedIn = localStorage.getItem('isLoggedIn');
@@ -239,5 +325,18 @@ if(!isLoggedIn){
 }
 
 </script>
+
+<script th:src="@{/javascript/updateUser.js}"></script>
+
+<!-- Modal -->
+<div id="modal-update" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!-- Aquí puedes agregar cualquier contenido adicional del modal si lo deseas -->
+    </div>
+  </div>
+</div>
+
+
 </body>
 </html>
