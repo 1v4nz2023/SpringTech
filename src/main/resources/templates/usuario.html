@@ -51,14 +51,14 @@ crossorigin=""/>
                   <span class="p-icono">Iniciar Sesión</span>
                 </a>
                 <div class="dropdown" id="listaopciones">
-                  <button class="btn btn-light dropdown-toggle text-success " type="button" data-bs-toggle="dropdown" aria-expanded="false" id="title">      
+                  <button class="btn btn-light dropdown-toggle text-success " type="button" data-bs-toggle="dropdown" aria-expanded="false" id="title" th:text="${nombre + ' ' + apellido}">      
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#" id="#subirfoto">Su cuenta</a></li>
-                    <li><a class="dropdown-item" href="#" id="#regvisitas">Historial de compras</a></li>
-                    <li><a class="dropdown-item" href="#" id="#regdelivery">Garantías</a></li>
-                    <li><a class="dropdown-item" href="#" id="#regdelivery">Reclamos</a></li>
-                    <li><a class="dropdown-item" th:href="@{/Login}" id="btn-logout">Cerrar sesión</a></li>
+                    <li><a class="dropdown-item" th:href="@{'/' + ${rol}}" id="cuenta">Mi cuenta</a></li>
+                    <li><a class="dropdown-item" href="#" id="#b">Historial de compras</a></li>
+                    <li><a class="dropdown-item" href="#" id="#c">Garantías</a></li>
+                    <li><a class="dropdown-item" href="#" id="#d">Reclamos</a></li>
+                    <li><a class="dropdown-item" th:href="@{/logout}" id="btn-logout">Cerrar sesión</a></li>
           
                   </ul>
                 </div>
@@ -155,6 +155,8 @@ crossorigin=""/>
 <section id="userPerfil">
 
 
+  <h1 th:text="${nombre + ' ' + apellido}"></h1>
+
 
 </section>
 
@@ -173,7 +175,7 @@ crossorigin=""/>
 
             <h6 class="text-footer my-3">Av. Garcilaso de la Vega 1372 <br>
                 Galería Plaza Tec <br>
-                Lima 15004 <br>
+                Lima 15004 <br>s
                 01 2502926
             </h6>
         </div>

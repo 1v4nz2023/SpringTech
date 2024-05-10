@@ -12,7 +12,6 @@ function submitForm(event) {
   axios
     .post("http://localhost:8090/api/login", data)
     .then((response) => {
-      const idUsuario = response.data.idUsuario;
       console.log(response);
 
       // Mostrar alerta de éxito con SweetAlert2
@@ -25,12 +24,12 @@ function submitForm(event) {
         showConfirmButton: false,
       }).then(() => {
 
-        window.location.href= response.data.rol;
+        window.location.href= response.data.ruta;
 
 
         localStorage.setItem("isLoggedIn", true);
-        localStorage.setItem("nombres", response.data.nombre);
-        localStorage.setItem("apellidos", response.data.apellido);
+        // localStorage.setItem("nombres", response.data.nombre);
+        // localStorage.setItem("apellidos", response.data.apellido);
       });
     })
     .catch((error) => {

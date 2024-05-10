@@ -22,6 +22,9 @@ import com.example.springtech.excepciones.RecursoNoEncontradoExcepcion;
 import com.example.springtech.modelo.Usuario;
 import com.example.springtech.servicio.IUsuarioServicio;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 //http://localhost:8090/api
 @RequestMapping("api")
@@ -130,21 +133,31 @@ public class UsuarioControlador {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<Map<String, Object>> iniciarSesion(@RequestBody Usuario usuario) {
+	public ResponseEntity<Map<String, Object>> iniciarSesion(@RequestBody Usuario usuario, HttpServletRequest request) {
 	    String dni = usuario.getDni();
 	    String password = usuario.getPassword();
 	    Usuario usuarioAutenticado = usuarioServicio.autenticarUsuario(dni, password);
 	    if (usuarioAutenticado == null) {
 	        throw new RecursoNoEncontradoExcepcion("Inicio de Sesión fallido");
 	    }
+	    
+	    // Guardar el rol del usuario en la sesión
+	    HttpSession session = request.getSession();
+	    session.setAttribute("idUsuario", usuarioAutenticado.getIdUsuario());
+	    session.setAttribute("nombre", usuarioAutenticado.getNombre());
+	    session.setAttribute("apellido", usuarioAutenticado.getApellidos());
+   	    session.setAttribute("rol", usuarioAutenticado.getRol());
 
 	    Map<String, Object> response = new HashMap<>();
 	    response.put("idUsuario", usuarioAutenticado.getIdUsuario());
 	    response.put("nombre", usuarioAutenticado.getNombre());
 	    response.put("apellido", usuarioAutenticado.getApellidos());
 	    response.put("rol", usuarioAutenticado.getRol());
-
+	    
+	    response.put("ruta", "admin".equals(usuarioAutenticado.getRol()) ? "admin" : "usuario");
+	    
 	    return ResponseEntity.ok(response);
+
 	}
 
 }
