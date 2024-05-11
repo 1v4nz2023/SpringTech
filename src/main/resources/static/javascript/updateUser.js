@@ -9,6 +9,7 @@ $(document).ready(function(){
 const baseUrl = "http://localhost:8090";
 $(editar).click(function(){
 
+   
     editarUsuario(idUsuario);
 
 });

@@ -86,19 +86,19 @@ crossorigin=""/>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Inicio</a>
+            <a class="nav-link" th:href="@{/index}">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Computadoras</a>
+            <a class="nav-link" th:href="@{/computadoras}">Computadoras</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Laptops</a>
+            <a class="nav-link" th:href="@{/laptops}">Laptops</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Impresoras</a>
+            <a class="nav-link" th:href="@{/impresoras}">Impresoras</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Garantía</a>
+            <a class="nav-link" th:href="@{/garantía}">Garantía</a>
           </li>
         </ul>
       </div>
@@ -157,7 +157,8 @@ crossorigin=""/>
 
   <h1 th:text="'Bienvenido(a): ' + ${nombre + ' ' + apellido}" class="my-5 text-success"></h1>
   <span class="d-none" id="idUsuario" th:text="${idUsuario}"></span>
-  
+  <span class="d-none" id="rol" th:text="${rol}"></span>
+
   <div class="container text-center my-5 align-items-center" >
     <div class="row align-items-center ">
       
@@ -317,16 +318,8 @@ Click aquí</button>
 <script th:src="@{/javascript/controladorEstilos.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script th:src="@{/javascript/auth.js}"></script>
-<script>
-  var isLoggedIn = localStorage.getItem('isLoggedIn');
-
-if(!isLoggedIn){
-  window.location.href = "index"
-}
-
-</script>
-
 <script th:src="@{/javascript/updateUser.js}"></script>
+<script th:src="@{/javascript/protegerRuta.js}"></script>
 
 <!-- Modal -->
 <div id="modal-update" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

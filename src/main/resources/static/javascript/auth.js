@@ -1,7 +1,6 @@
 $(document).ready(function() {
     var logoutBtn = $('#btn-logout');
     var loginBtn = $('#btn-login');
-    var listaopciones = $('#listaopciones');
 
 
     var isLoggedIn = localStorage.getItem('isLoggedIn');

@@ -32,6 +32,44 @@ public class RutasController {
 		return "index";
 	}
 	
+	@GetMapping("/computadoras")
+	public String computadoras(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "computadoras";
+	}
+
+	@GetMapping("/computadoras/pc-oficina")
+	public String computadorasoficina(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "pc-oficina";
+	}	
+	
 	@GetMapping("/Login")
 	public String login(Model model) {
 		model.addAttribute("titulo", "INICIAR SESIÓN");
@@ -93,6 +131,7 @@ public class RutasController {
 	    // Redireccionar a la página de inicio de sesión
 	    return "redirect:/Login";
 	}
+	
 
 	
 }

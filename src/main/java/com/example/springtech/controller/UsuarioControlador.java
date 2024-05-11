@@ -121,9 +121,6 @@ public class UsuarioControlador {
 	            return null;
 	        }
 	    }
-
-
-	   
 	
 	@DeleteMapping("/usuarios/{id}")
 	public ResponseEntity<Map<String,Boolean>>
