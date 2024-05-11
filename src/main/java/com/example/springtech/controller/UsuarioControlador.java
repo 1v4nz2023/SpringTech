@@ -102,7 +102,7 @@ public class UsuarioControlador {
 	        String hashedPassword = hashPassword(usuarioRecibido.getPassword());
 	        usuario.setPassword(hashedPassword);
 	    }
-
+			//last commit
 	    usuarioServicio.actualizarUsuario(usuario);
 	    return ResponseEntity.ok(usuario);
 	}
