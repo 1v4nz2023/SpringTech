@@ -1,5 +1,9 @@
 package com.example.springtech.controller;
 
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,6 +74,7 @@ public class UsuarioControlador {
 
 	    logger.info("Usuario a agregar: " + usuario);
 	    return usuarioServicio.guardarUsuario(usuario);
+	
 	}
 	
 	@GetMapping("/usuarios/{id}")
@@ -81,21 +86,44 @@ public class UsuarioControlador {
 	}
 	
 	@PutMapping("/usuarios/{id}")
-	public ResponseEntity<Usuario> actualizarUsuario(@PathVariable Integer id, @RequestBody Usuario usuarioRecibido){
-		
-		Usuario usuario = usuarioServicio.buscarUsuarioPorId(id);
-		if (usuario == null)
-			throw new RecursoNoEncontradoExcepcion("El id recibido no existe: "+id);
-		
-	
-		usuario.setNombre(usuarioRecibido.getNombre());
-		usuario.setApellidos(usuarioRecibido.getApellidos());
-		usuario.setCorreo(usuarioRecibido.getCorreo());
-		usuario.setPassword(usuarioRecibido.getPassword());
-		usuario.setRol(usuarioRecibido.getRol());
-		usuarioServicio.guardarUsuario(usuario);
-		return ResponseEntity.ok(usuario);
+	public ResponseEntity<Usuario> actualizarUsuario(@PathVariable Integer id, @RequestBody Usuario usuarioRecibido) {
+	    Usuario usuario = usuarioServicio.buscarUsuarioPorId(id);
+	    if (usuario == null)
+	        throw new RecursoNoEncontradoExcepcion("El id recibido no existe: " + id);
+
+	    usuario.setNombre(usuarioRecibido.getNombre());
+	    usuario.setApellidos(usuarioRecibido.getApellidos());
+	    usuario.setCorreo(usuarioRecibido.getCorreo());
+	    usuario.setRol(usuarioRecibido.getRol());
+
+	    // Verificar si la contraseña recibida es diferente a la contraseña almacenada en la BD
+	    if (!usuarioRecibido.getPassword().equals(usuario.getPassword())) {
+	        // Encriptar la nueva contraseña antes de guardarla
+	        String hashedPassword = hashPassword(usuarioRecibido.getPassword());
+	        usuario.setPassword(hashedPassword);
+	    }
+
+	    usuarioServicio.actualizarUsuario(usuario);
+	    return ResponseEntity.ok(usuario);
 	}
+	   public String hashPassword(String password) {
+	        try {
+	            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+	            byte[] hashBytes = digest.digest(password.getBytes());
+	            BigInteger hashBigInteger = new BigInteger(1, hashBytes);
+	            String hashedPassword = hashBigInteger.toString(16);
+	            while (hashedPassword.length() < 64) {
+	                hashedPassword = "0" + hashedPassword;
+	            }
+	            return hashedPassword;
+	        } catch (NoSuchAlgorithmException e) {
+	            e.printStackTrace();
+	            return null;
+	        }
+	    }
+
+
+	   
 	
 	@DeleteMapping("/usuarios/{id}")
 	public ResponseEntity<Map<String,Boolean>>

@@ -5,6 +5,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,8 @@ import com.example.springtech.repositorio.UsuarioRepositorio;
 
 @Service
 public class UsuarioServicio implements IUsuarioServicio {
-	
+	//private static final Logger logger = LoggerFactory.getLogger(UsuarioControlador.class);
+
 	@Autowired
 	private UsuarioRepositorio usuarioRepositorio;
 
@@ -33,18 +36,23 @@ public class UsuarioServicio implements IUsuarioServicio {
 		
 	}
 
+    @Override
+    public Usuario guardarUsuario(Usuario usuario) {
+        // Verificar que la contraseña no sea nula antes de calcular su hash
+        if (usuario.getPassword() != null) {
+            // Encriptar la contraseña antes de guardar el usuario
+            String hashedPassword = hashPassword(usuario.getPassword());
+            usuario.setPassword(hashedPassword);
+        }
+        return usuarioRepositorio.save(usuario);
+    }
+    
+    
 	@Override
-	public Usuario guardarUsuario(Usuario usuario) {
-	    Usuario usuarioExistente = usuarioRepositorio.findById(usuario.getIdUsuario()).orElse(null);
-	    if (usuarioExistente != null) {
-	        // Verificar si la contraseña ha sido modificada
-	        if (!usuario.getPassword().equals(usuarioExistente.getPassword())) {
-	            // Encriptar la nueva contraseña antes de guardar el usuario
-	            String hashedPassword = hashPassword(usuario.getPassword());
-	            usuario.setPassword(hashedPassword);
-	        }
-	    }
-	    return usuarioRepositorio.save(usuario);
+	public Usuario actualizarUsuario(Usuario usuario) {
+
+        return usuarioRepositorio.save(usuario);
+        
 	}
 
 
@@ -101,6 +109,10 @@ public class UsuarioServicio implements IUsuarioServicio {
             return null;
         }
     }
+
+
+
+
 
 
 }

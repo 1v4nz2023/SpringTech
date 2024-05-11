@@ -27,5 +27,6 @@ public interface IUsuarioServicio {
 	public String hashPassword(String password);
 	
 	
+	public Usuario actualizarUsuario(Usuario usuario);
 
 }
