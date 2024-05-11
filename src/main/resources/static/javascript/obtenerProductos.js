@@ -19,42 +19,53 @@ getPokemons(urlPokemon);
 const DataPokemons = async(data) => {
   try {
     let count = 0;
+    let container = document.createElement('div');
+    container.classList.add('d-flex', 'justify-content-center'); // Agregar clases para centrar horizontalmente
     let row = document.createElement('div');
-    row.classList.add('row');
+    row.classList.add('row', 'd-flex', 'justify-content-center'); // Agregar clases para centrar horizontalmente
     for(let index of data){
         const resp = await fetch(index.url);
         const resul = await resp.json();
         console.log(resul);
 
         templateHtml = `
-          <div class="col-md-2 mb-3">
-            <div class="card">
-              <img src="${resul.sprites.other.dream_world.front_default}" class="card-img-top" alt="${resul.name}">
-              <div class="card-body">
-                <p class="card-text">${resul.name}</p>
-              </div>
+          <div class="card col-md-2 col-4 mx-1 mt-2" style="width: 15rem" id="card${count+1}">
+            <a href=""><img src="${resul.sprites.other.dream_world.front_default}" class="d-block w-100 card-img-top" alt="${resul.name}" style="height: 150px;"></a>
+            <div class="card-body">
+                <h6 class="card-title">Product ${count+1}</h6>
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column product-text">
+                        <span >Precio</span>
+                        <span>Stock</span>
+                        <span>Referencia</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <a href="#" class="btn btn-success product-text">Comprar</a>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
         `;
 
         row.innerHTML += templateHtml;
         count++;
 
-        // Si ya hemos agregado 5 tarjetas, agregamos la fila al contenedor y creamos una nueva fila
         if (count === 5) {
-          list_pokemons.appendChild(row);
+          container.appendChild(row);
+          list_pokemons.appendChild(container);
           row = document.createElement('div');
-          row.classList.add('row');
+          row.classList.add('row', 'd-flex', 'justify-content-center'); // Agregar clases para centrar horizontalmente
           count = 0;
         }
     }
 
-    // Si quedan tarjetas en la fila sin agregar al contenedor, las agregamos
     if (count > 0) {
-      list_pokemons.appendChild(row);
+      container.appendChild(row);
+      list_pokemons.appendChild(container);
     }
 
   } catch (error) {
     console.log(error);
   }
 };
+

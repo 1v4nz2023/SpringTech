@@ -70,6 +70,23 @@ public class RutasController {
 		return "pc-oficina";
 	}	
 	
+	@GetMapping("/listaUsuarios")
+	public String mostrarUsuarios(HttpServletRequest request,Model model) {
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		return "listaUsuarios";
+	}
+	
+	
 	@GetMapping("/Login")
 	public String login(Model model) {
 		model.addAttribute("titulo", "INICIAR SESIÓN");
