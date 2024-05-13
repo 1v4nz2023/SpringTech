@@ -153,75 +153,20 @@ crossorigin=""/>
 </section>
 
 
-<!-- COMPUTADORAS -->
-<section id="computadoras">
+<section id="computadoras-oficina" class="container">
 
-    <div class="container text-center mt-5">
-        <div class="row align-items-center">
-          <div class="col d-flex justify-content-center">
-            
-            <div class="card my-2" style="width: 18rem;">
-                <a th:href="@{/computadoras/pc-oficina}">
-                <img th:src="@{/images/pc/pc-oficina.jpeg}" class="card-img-top" alt="...">
-                </a>
-                <div class="card-body">
-                  <h5 class="card-title">Oficina</h5>
-                </div>
-              </div>
 
-        </div>
-          <div class="col d-flex justify-content-center">
-            <div class="card my-2" style="width: 18rem;">
-                <a th:href="@{/computadoras/pc-ingenieriadiseño}">
-                <img th:src="@{images/pc/pc-ing.jpg}" class="card-img-top" alt="...">
-                </a>
-                <div class="card-body">
-                  <h5 class="card-title">Ingeniería y diseño</h5>
-                </div>
-              </div>
-          </div>
-          <div class="col d-flex justify-content-center">
-            <div class="card my-2" style="width: 18rem;">
-                <a th:href="@{/computadoras/pc-gamer}">
-                <img th:src="@{images/pc/pc-gamer.webp}" class="card-img-top" alt="...">
-                </a>
-                <div class="card-body">
-                  <h5 class="card-title">Gamer</h5>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>
+<div class="container d-block justify-content-center mt-5" id="list_productos"></div>
+
+
+<div class="container d-flex justify-content-between mt-5">
+  <div id="mostrando"></div>
+<div class="buttons" id="buttons"></div>
+
+</div>
 
 
 
-  <div class="container mt-5">
-    <div class="container d-flex justify-content-between">
-      <div>
-        <h2>Computadoras</h2>
-        <span><a href="" class="text-decoration-none seemore"><i class="fa-solid fa-eye"></i> Ver más</a></span>
-      </div>
-
-      <div>
-        <button type="button" class="btn btn-success rounded-circle"  data-bs-target="#carouselExampleControls-computadoras" data-bs-slide="prev"><i class="fa-solid fa-angle-left"></i></button>
-        <button type="button" class="btn btn-success rounded-circle" data-bs-target="#carouselExampleControls-computadoras" data-bs-slide="next"><i class="fa-solid fa-angle-right"></i></button>
-   
-      </div>
-
-
-    </div>
-    <div id="carouselExampleControls-computadoras" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner mt-4">
-        <div class="carousel-item active">
-          <div class="row d-flex justify-content-center" id="pc-container"></div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="row d-flex justify-content-center" id="pc-container2"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
 
@@ -329,7 +274,7 @@ crossorigin=""/>
 <script th:src="@{/javascript/controladorEstilos.js}"></script>
 <script th:src="@{/javascript/domcomputadoras.js}"></script>
 <script th:src="@{/javascript/auth.js}"></script>
-
+<script th:src="@{/javascript/obtenerProductosporpcgamer.js}"></script>
 
 </body>
 </html>

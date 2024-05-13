@@ -162,7 +162,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://localhost:8090/api/producto";
+	    String baseUrl = "http://localhost:8090/api/producto/pc-gamer";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -204,7 +204,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://localhost:8090/api/producto";
+	    String baseUrl = "http://localhost:8090/api/producto/pc-ingenieriadiseño";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -246,7 +246,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://localhost:8090/api/producto";
+	    String baseUrl = "http://localhost:8090/api/producto/pc-oficina";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
