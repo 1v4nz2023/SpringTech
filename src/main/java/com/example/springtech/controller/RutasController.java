@@ -68,7 +68,13 @@ public class RutasController {
 		
 		
 		return "pc-oficina";
-	}	
+	}
+
+	//Ronaldo (metodos de pago static)
+	@GetMapping("/metodosPago")
+	public String mostrarMetodosPago(){
+		return "metodosPago";
+	}
 	
 	@GetMapping("/Login")
 	public String login(Model model) {
