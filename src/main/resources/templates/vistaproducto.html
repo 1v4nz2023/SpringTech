@@ -163,7 +163,25 @@ crossorigin=""/>
   </div>
 </section>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      const decrementButton = document.getElementById("decrementButton");
+      const incrementButton = document.getElementById("incrementButton");
+      const counter = document.getElementById("counter");
 
+      decrementButton.addEventListener("click", function() {
+          let currentValue = parseInt(counter.textContent);
+          if (currentValue > 1) {
+              counter.textContent = currentValue - 1;
+          }
+      });
+
+      incrementButton.addEventListener("click", function() {
+          let currentValue = parseInt(counter.textContent);
+          counter.textContent = currentValue + 1;
+      });
+  });
+</script>
 
 
 
