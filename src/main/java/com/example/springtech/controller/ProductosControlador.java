@@ -345,4 +345,45 @@ public class ProductosControlador {
 
 	    return response;
 	}
+	
+	@GetMapping("/producto/impresoras")
+	public ProductosListResponse obtenerImpresoras(@RequestParam(defaultValue = "0") int offset,
+	                                                      @RequestParam(defaultValue = "8") int limit) {
+	    // Obtener productos por la categoría "impresora"
+	    List<Productos> productos = productoServicio.buscarProductosPorCategoria("impresora");
+
+	    // Total de productos en la categoría "impresora"
+	    int totalProductos = productos.size();
+
+	    // Lista de productos a mostrar según el offset y el límite
+	    List<Productos> productosToShow;
+
+	    // Limitar el número de elementos a mostrar en función del offset y el límite
+	    if (offset < totalProductos) {
+	        int endIndex = Math.min(offset + limit, totalProductos);
+	        productosToShow = productos.subList(offset, endIndex);
+	    } else {
+	        productosToShow = Collections.emptyList(); // Si el offset supera el total de productos, no se muestra ninguno
+	    }
+
+	    // URLs para la paginación
+	    String baseUrl = "http://localhost:8090/api/producto/impresoras";
+	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
+	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
+
+	    // Si el previous es null, significa que estamos en la primera página
+	    // Entonces, si hay productos para mostrar en la página actual, establecemos el previous en null
+	    if (previousUrl == null && !productosToShow.isEmpty()) {
+	        previousUrl = null;
+	    }
+
+	    // Crear la respuesta con los resultados y la información de paginación
+	    ProductosListResponse response = new ProductosListResponse();
+	    response.setCount(totalProductos);
+	    response.setNext(nextUrl);
+	    response.setPrevious(previousUrl);
+	    response.setResults(productosToShow);
+
+	    return response;
+	}
 }
