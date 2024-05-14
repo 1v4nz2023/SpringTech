@@ -9,11 +9,9 @@ $(document).ready(function () {
       try {
         const response = await fetch(url);
         const results = await response.json();
-        console.log(results);
         Dataproductos(results);
   
       } catch (error) {
-        console.error(error);
       }
     };
   
@@ -25,8 +23,7 @@ $(document).ready(function () {
           for(let i=0; i<5 ;i++){
               const index = data[i];
               const index2 = data[i+5];
-              console.log(index);
-          // Plantilla de cadena con el HTML de la tarjeta
+              // Plantilla de cadena con el HTML de la tarjeta
           var cardHtml = `
           <div class="card col-md-3 col-6 mx-1 my-3 mx-1" style="width: 15rem"> <!-- Cambiar col-md-2 a col-md-3 para mostrar 4 elementos por fila -->
             <a href="computadoras/producto?id=${index.partNumber}"><img src="${index.url}" class="d-block w-100 card-img-top" alt="${index.name}" style="height: 150px;"></a>
