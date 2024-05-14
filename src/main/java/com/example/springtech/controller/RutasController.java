@@ -76,6 +76,237 @@ public class RutasController {
 		return "metodosPago";
 	}
 	
+	@GetMapping("/computadoras/pc-gamer")
+	public String computadorasgamer(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "pc-gamer";
+	}	
+	
+	@GetMapping("/computadoras/pc-ingenieriadiseño")
+	public String computadorasingenieriadiseño(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "pc-ingenieriadiseño";
+	}	
+	
+	
+	
+	
+	@GetMapping("/computadoras/producto")
+	public String producto(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "producto";
+	}	
+	
+	
+	@GetMapping("/laptops/producto")
+	public String productolaptops(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "producto";
+	}
+	
+	
+	@GetMapping("/laptops")
+	public String laptops(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "laptops";
+	}	
+	
+	
+	
+	@GetMapping("/impresoras")
+	public String impresoras(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "impresoras";
+	}	
+	
+	
+	@GetMapping("/garantía")
+	public String garantia(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "garantía";
+	}	
+	
+	
+	
+	@GetMapping("/formulario-garantia")
+	public String formularioGarantia(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "formulario-garantia";
+	}	
+	
+	
+	
+	@GetMapping("/addProductos")
+	public String addProductos(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "addProductos";
+	}	
+	
+	
+	@GetMapping("/editProductos")
+	public String editProductos(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "editProductos";
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@GetMapping("/listaUsuarios")
+	public String mostrarUsuarios(HttpServletRequest request,Model model) {
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		return "listaUsuarios";
+	}
+	
+	
 	@GetMapping("/Login")
 	public String login(Model model) {
 		model.addAttribute("titulo", "INICIAR SESIÓN");
