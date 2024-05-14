@@ -120,19 +120,58 @@ public class ProductosControlador {
 	    return ResponseEntity.ok(producto);
 	}
 	
+	//Sirve para nuevos productos de todas las pcs
+    @GetMapping("/productos/pc")
+    public ResponseEntity<List<Productos>> listarPcPorCategorias() {
+        List<Productos> pcCategorias = productoServicio.listarPorCategorias();
+        return ResponseEntity.ok(pcCategorias);
+    }
+    
+	//Sirve para nuevos productos de todas las laptops
+    @GetMapping("/productos/laptops")
+    public ResponseEntity<List<Productos>> listarLaptops() {
+        List<Productos> pcCategorias = productoServicio.listarlaptop();
+        return ResponseEntity.ok(pcCategorias);
+    }
+    
+	//Sirve para nuevos productos de todas las impresoras
+    @GetMapping("/productos/impresoras")
+    public ResponseEntity<List<Productos>> listarImpresoras() {
+        List<Productos> pcCategorias = productoServicio.listarimpresoras();
+        return ResponseEntity.ok(pcCategorias);
+    }
+	
+	
+	//Sirve para nuevos productos de pc oficina
 	@GetMapping("/productos/pc-oficina")
-	public ResponseEntity<List<Productos>> obtenerProductosPcOficina() {
-	    List<Productos> productos = productoServicio.buscarProductosPorCategoria("pc-oficina");
-
+	public ResponseEntity<List<Productos>> listarProductosPcOficina() {
+	    List<Productos> productos = productoServicio.listarpcoficina("pc-oficina");
+	   
 	    if (productos.isEmpty())
 	        throw new RecursoNoEncontradoExcepcion("No se encontraron productos en la categoría pc-oficina");
 
 	    return ResponseEntity.ok(productos);
 	}
 
+	
+	//Sirve para nuevos productos de pc gamer
+
 	@GetMapping("/productos/pc-gamer")
-	public ResponseEntity<List<Productos>> obtenerProductosPcGamer() {
-	    List<Productos> productos = productoServicio.buscarProductosPorCategoria("pc-gamer");
+	public ResponseEntity<List<Productos>>  listarProductosPcGamer() {
+	    List<Productos> productos = productoServicio.listarpcoficina("pc-gamer");
+
+	    if (productos.isEmpty())
+	        throw new RecursoNoEncontradoExcepcion("No se encontraron productos en la categoría pc-gamer");
+
+	    return ResponseEntity.ok(productos);
+	}
+	
+	
+	//Sirve para nuevos productos de pc ingenieriadiseño
+
+	@GetMapping("/productos/pc-ingenieriadiseño")
+	public ResponseEntity<List<Productos>> listarProductosPcIngenieriaDiseño() {
+	    List<Productos> productos = productoServicio.listarpcoficina("pc-ingenieriadiseño");
 
 	    if (productos.isEmpty())
 	        throw new RecursoNoEncontradoExcepcion("No se encontraron productos en la categoría pc-gamer");
@@ -247,6 +286,47 @@ public class ProductosControlador {
 
 	    // URLs para la paginación
 	    String baseUrl = "http://localhost:8090/api/producto/pc-oficina";
+	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
+	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
+
+	    // Si el previous es null, significa que estamos en la primera página
+	    // Entonces, si hay productos para mostrar en la página actual, establecemos el previous en null
+	    if (previousUrl == null && !productosToShow.isEmpty()) {
+	        previousUrl = null;
+	    }
+
+	    // Crear la respuesta con los resultados y la información de paginación
+	    ProductosListResponse response = new ProductosListResponse();
+	    response.setCount(totalProductos);
+	    response.setNext(nextUrl);
+	    response.setPrevious(previousUrl);
+	    response.setResults(productosToShow);
+
+	    return response;
+	}
+	
+	@GetMapping("/producto/laptops")
+	public ProductosListResponse obtenerLaptops(@RequestParam(defaultValue = "0") int offset,
+	                                                      @RequestParam(defaultValue = "8") int limit) {
+	    // Obtener productos por la categoría "pc-gamer"
+	    List<Productos> productos = productoServicio.buscarProductosPorCategoria("laptop");
+
+	    // Total de productos en la categoría "pc-gamer"
+	    int totalProductos = productos.size();
+
+	    // Lista de productos a mostrar según el offset y el límite
+	    List<Productos> productosToShow;
+
+	    // Limitar el número de elementos a mostrar en función del offset y el límite
+	    if (offset < totalProductos) {
+	        int endIndex = Math.min(offset + limit, totalProductos);
+	        productosToShow = productos.subList(offset, endIndex);
+	    } else {
+	        productosToShow = Collections.emptyList(); // Si el offset supera el total de productos, no se muestra ninguno
+	    }
+
+	    // URLs para la paginación
+	    String baseUrl = "http://localhost:8090/api/producto/laptops";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 

@@ -152,126 +152,23 @@ crossorigin=""/>
 
 </section>
 
-<!-- NUEVOS PRODUCTOS -->
-<section id="new-products">
-  <div class="container mt-5">
-    <div class="container d-flex justify-content-between">
-      <h2>Nuevos ingresos</h2>
-      <div>
-        <button type="button" class="btn btn-success rounded-circle"  data-bs-target="#carouselExampleControls" data-bs-slide="prev"><i class="fa-solid fa-angle-left"></i></button>
-        <button type="button" class="btn btn-success rounded-circle" data-bs-target="#carouselExampleControls" data-bs-slide="next"><i class="fa-solid fa-angle-right"></i></button>
-      </div>
-    </div>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner mt-4">
-        <div class="carousel-item active">
-          <div class="row d-flex justify-content-center" id="newproduct-container"></div>
-        </div>
 
-        <div class="carousel-item">
-          <div class="row d-flex justify-content-center" id="newproduct-container2"></div>
-        </div>
-
-    </div>
-  </div>
-  </div>
-</section>
-
-<!-- COMPUTADORAS -->
-<section id="computadoras">
-  <div class="container mt-5">
-    <div class="container d-flex justify-content-between">
-      <div>
-        <h2>Computadoras</h2>
-        <span><a href="" class="text-decoration-none seemore"><i class="fa-solid fa-eye"></i> Ver más</a></span>
-      </div>
-
-      <div>
-        <button type="button" class="btn btn-success rounded-circle"  data-bs-target="#carouselExampleControls-computadoras" data-bs-slide="prev"><i class="fa-solid fa-angle-left"></i></button>
-        <button type="button" class="btn btn-success rounded-circle" data-bs-target="#carouselExampleControls-computadoras" data-bs-slide="next"><i class="fa-solid fa-angle-right"></i></button>
-   
-      </div>
+<section id="computadoras-oficina" class="container">
 
 
-    </div>
-    <div id="carouselExampleControls-computadoras" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner mt-4">
-        <div class="carousel-item active">
-          <div class="row d-flex justify-content-center" id="pc-container"></div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="row d-flex justify-content-center" id="pc-container2"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LAPTOPS -->
-
-<section id="laptops">
-  <div class="container mt-5">
-    <div class="container d-flex justify-content-between">
-      <div>
-        <h2>Laptops</h2>
-        <span><a href="" class="text-decoration-none seemore"><i class="fa-solid fa-eye"></i> Ver más</a></span>
-      </div>
-
-      <div>
-        <button type="button" class="btn btn-success rounded-circle"  data-bs-target="#carouselExampleControls-laptops" data-bs-slide="prev"><i class="fa-solid fa-angle-left"></i></button>
-        <button type="button" class="btn btn-success rounded-circle" data-bs-target="#carouselExampleControls-laptops" data-bs-slide="next"><i class="fa-solid fa-angle-right"></i></button>
-   
-      </div>
+<div class="container d-block justify-content-center mt-5" id="list_productos"></div>
 
 
-    </div>
-    <div id="carouselExampleControls-laptops" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner mt-4">
-        <div class="carousel-item active">
-          <div class="row d-flex justify-content-center" id="laptop-container"></div>
-        </div>
+<div class="container d-flex justify-content-between mt-5">
+  <div id="mostrando"></div>
+<div class="buttons" id="buttons"></div>
 
-        <div class="carousel-item">
-          <div class="row d-flex justify-content-center" id="laptop-container2"></div>
-        </div>
-    </div>
-  </div>
-  </div>
-</section>
+</div>
 
-<!-- IMPRESORAS -->
-
-<section id="impresoras">
-  <div class="container mt-5">
-    <div class="container d-flex justify-content-between">
-      <div>
-        <h2>Impresoras</h2>
-        <span><a href="" class="text-decoration-none seemore"><i class="fa-solid fa-eye"></i> Ver más</a></span>
-      </div>
-
-      <div>
-        <button type="button" class="btn btn-success rounded-circle"  data-bs-target="#carouselExampleControls-impresoras" data-bs-slide="prev"><i class="fa-solid fa-angle-left"></i></button>
-        <button type="button" class="btn btn-success rounded-circle" data-bs-target="#carouselExampleControls-impresoras" data-bs-slide="next"><i class="fa-solid fa-angle-right"></i></button>
-   
-      </div>
-
-
-    </div>
-    <div id="carouselExampleControls-impresoras" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner mt-4">
-        <div class="carousel-item active">
-          <div class="row d-flex justify-content-center" id="impresora-container"></div>
-        </div>
-        <div class="carousel-item">
-          <div class="row d-flex justify-content-center" id="impresora-container2"></div>
-      </div>
-    </div>
-  </div>
-  </div>
 
 
 </section>
+
 
 <section id="partners">
   
@@ -375,12 +272,9 @@ crossorigin=""/>
 <script th:src="@{/javascript/controladorEstilos.js}"></script>
 
 <script th:src="@{/javascript/controladorEstilos.js}"></script>
-<script th:src="@{/javascript/domnewproducts.js}"></script>
 <script th:src="@{/javascript/domcomputadoras.js}"></script>
-<script th:src="@{/javascript/domlaptops.js}"></script>
-<script th:src="@{/javascript/domimpresoras.js}"></script>
 <script th:src="@{/javascript/auth.js}"></script>
-<!-- <a sssth:href="@{/registro}">Registrar</a> -->
+<script th:src="@{/javascript/obtenerLaptops.js}"></script>
 
 </body>
 </html>

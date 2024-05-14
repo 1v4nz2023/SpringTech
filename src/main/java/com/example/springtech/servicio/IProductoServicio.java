@@ -8,6 +8,13 @@ public interface IProductoServicio {
 	
 	
 	public List<Productos> listarproducto();
+	
+	public List<Productos> listarpcoficina(String categoria);
+	public List<Productos> listarpcingenieriadiseño(String categoria);
+	public List<Productos> listarpcgamer(String categoria);
+
+	
+	public List<Productos> listarPorCategorias();
 
     List<Productos> listarproducto(int offset, int limit);
     int contarproducto();
@@ -21,4 +28,9 @@ public interface IProductoServicio {
     public Productos buscarPartNumberAndCategoria(String partNumber, String categoria);
 
     List<Productos> buscarProductosPorCategoria(String categoria);
+
+	List<Productos> listarlaptop();
+	
+	List<Productos> listarimpresoras();
+
 }
