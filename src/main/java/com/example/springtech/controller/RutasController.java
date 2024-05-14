@@ -71,26 +71,6 @@ public class RutasController {
 	}
 
 
-	
-	@GetMapping("/computadoras/pc-gamer")
-	public String computadorasgamer(HttpServletRequest request,Model model) {
-		
-	    HttpSession session = request.getSession();
-	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
-	    String nombre = (String) session.getAttribute("nombre");
-	    String apellido = (String) session.getAttribute("apellido");
-	    String rol = (String) session.getAttribute("rol");
-
-	    // Agregar el rol al modelo para pasarlo a la vista
-	    model.addAttribute("idUsuario", idUsuario);
-	    model.addAttribute("nombre", nombre);
-	    model.addAttribute("apellido", apellido);
-	    model.addAttribute("rol", rol);
-		
-		
-		return "pc-gamer";
-	}	
-	
 	@GetMapping("/computadoras/pc-ingenieriadiseño")
 	public String computadorasingenieriadiseño(HttpServletRequest request,Model model) {
 		
@@ -112,7 +92,28 @@ public class RutasController {
 	
 	
 	
+	@GetMapping("/computadoras/pc-gamer")
+	public String computadorasgamer(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "pc-gamer";
+	}	
 	
+
+	
+
 	@GetMapping("/computadoras/producto")
 	public String producto(HttpServletRequest request,Model model) {
 		
@@ -211,6 +212,26 @@ public class RutasController {
 		
 		
 		return "garantía";
+	}	
+	
+	
+	@GetMapping("/metodos")
+	public String metodos(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "metodosPago";
 	}	
 	
 	
