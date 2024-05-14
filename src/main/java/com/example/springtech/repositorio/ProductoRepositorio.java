@@ -10,7 +10,7 @@ public interface ProductoRepositorio extends JpaRepository<Productos, Integer>{
 
 	boolean existsBypartNumber(String partNumber);
 	Productos findBypartNumber(String partNumber);
-    Productos findByCategoria (String categoria);
+    Productos findBycategoria (String categoria);
     List<Productos> findByCategoria(String categoria);
     Productos findByPartNumberAndCategoria(String partNumber, String categoria);
     

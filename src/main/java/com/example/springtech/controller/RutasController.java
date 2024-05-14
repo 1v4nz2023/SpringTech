@@ -152,7 +152,26 @@ public class RutasController {
 		
 		return "producto";
 	}
+
 	
+	@GetMapping("/impresoras/producto")
+	public String productoimpresoras(HttpServletRequest request,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+		
+		
+		return "producto";
+	}
 	
 	@GetMapping("/laptops")
 	public String laptops(HttpServletRequest request,Model model) {

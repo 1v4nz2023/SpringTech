@@ -48,7 +48,7 @@ $(document).ready(function () {
       `;
         var card2Html = `
         <div class="card col-md-3 col-6 mx-1 my-3 mx-1" style="width: 15rem"> <!-- Cambiar col-md-2 a col-md-3 para mostrar 4 elementos por fila -->
-          <a href="computadoras/producto?id=${index2.partNumber}"><img src="${index2.url}" class="d-block w-100 card-img-top" alt="${index2.name}" style="height: 150px;"></a>
+          <a href="${index.categoria}s/producto?id=${index2.partNumber}"><img src="${index2.url}" class="d-block w-100 card-img-top" alt="${index2.name}" style="height: 150px;"></a>
           <h6 class="card-title mt-3">${index2.nombreProducto}</h6>
 
           <div class="card-body d-flex align-items-end justify-content-center">
