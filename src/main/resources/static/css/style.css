@@ -126,3 +126,27 @@ align-items: center;
 	}
   }
 
+  /* Estilo para el botón del contador de productos */
+	#decrementButton,
+	#incrementButton,
+	#counter {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+	#decrementButton:hover,
+	#incrementButton:hover {
+  background-color: #f0f0f0;
+}
+
+#counter {
+  margin: 0 0.5rem;
+}
+
+  
