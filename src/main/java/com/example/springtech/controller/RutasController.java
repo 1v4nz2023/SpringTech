@@ -70,11 +70,7 @@ public class RutasController {
 		return "pc-oficina";
 	}
 
-	//Ronaldo (metodos de pago static)
-	@GetMapping("/metodosPago")
-	public String mostrarMetodosPago(){
-		return "metodosPago";
-	}
+
 	
 	@GetMapping("/computadoras/pc-gamer")
 	public String computadorasgamer(HttpServletRequest request,Model model) {
@@ -278,12 +274,6 @@ public class RutasController {
 		
 		return "editProductos";
 	}	
-	
-	
-	
-	
-	
-	
 	
 	
 	
