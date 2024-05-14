@@ -100,6 +100,9 @@ crossorigin=""/>
           <li class="nav-item">
             <a class="nav-link" th:href="@{/garantía}">Garantía</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{/metodos}">Métodos de pago</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -198,12 +201,25 @@ Click aquí</button>
       <div class="col align-items-center d-flex justify-content-center my-3">
         <div class="card" style="width: 18rem;">
           <div>
-            <img th:src="@{/images/history.png}" class="setimg my-2" alt="userfoto">
+            <img th:src="@{/images/ingreso.png}" class="setimg my-2" alt="userfoto">
           </div>         
            <div class="card-body">
-            <h5 class="card-title">Historial</h5>
-            <p class="card-text">Revisa tus compras</p>
-            <a href="#" class="btn btn-success">Click aquí</a>
+            <h5 class="card-title">Nuevos Productos</h5>
+            <p class="card-text">Ingresa los productos</p>
+            <a th:href="@{/addProductos}" class="btn btn-success">Click aquí</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col align-items-center d-flex justify-content-center my-3">
+        <div class="card" style="width: 18rem;">
+          <div>
+            <img th:src="@{/images/inventario.png}" class="setimg my-2" alt="userfoto">
+          </div>         
+           <div class="card-body">
+            <h5 class="card-title">Productos</h5>
+            <p class="card-text">Edita los productos</p>
+            <a th:href="@{/editProductos}" class="btn btn-success">Click aquí</a>
           </div>
         </div>
       </div>
