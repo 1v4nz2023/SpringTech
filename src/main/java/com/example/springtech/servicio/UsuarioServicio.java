@@ -23,13 +23,11 @@ public class UsuarioServicio implements IUsuarioServicio {
 
 	@Override
 	public List<Usuario> listarUsuarios() {
-		// TODO Auto-generated method stub
 		return usuarioRepositorio.findAll();
 	}
 
 	@Override
 	public Usuario buscarUsuarioPorId(Integer idUsuario) {
-		// TODO Auto-generated method stub
 		
 		Usuario usuario = usuarioRepositorio.findById(idUsuario).orElse(null);
 		return usuario;
@@ -58,7 +56,6 @@ public class UsuarioServicio implements IUsuarioServicio {
 
 	@Override
 	public void eliminarUsuario(Usuario usuario) {
-		// TODO Auto-generated method stub
 		usuarioRepositorio.delete(usuario);
 	}
 
@@ -70,7 +67,6 @@ public class UsuarioServicio implements IUsuarioServicio {
 
 	@Override
 	public boolean existeUsuarioConCorreo(String correo) {
-		// TODO Auto-generated method stub
 		return usuarioRepositorio.existsBycorreo(correo);
 	}
 
@@ -89,7 +85,6 @@ public class UsuarioServicio implements IUsuarioServicio {
 
 	@Override
 	public Usuario buscarUsuarioporDNI(String dni) {
-		// TODO Auto-generated method stub
 		Usuario usuario = usuarioRepositorio.findByDni(dni);
 		return usuario;
 			}

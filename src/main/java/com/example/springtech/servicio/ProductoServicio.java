@@ -63,7 +63,6 @@ public class ProductoServicio implements IProductoServicio{
 
 	@Override
 	public List<Productos> listarpcgamer(String categoria) {
-		// TODO Auto-generated method stub
         // Obtener la lista de productos desde el repositorio
         List<Productos> productos = productoRepository.findByCategoria(categoria);
 
@@ -78,13 +77,11 @@ public class ProductoServicio implements IProductoServicio{
 
 	@Override
 	public List<Productos> listarproducto(int offset, int limit) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int contarproducto() {
-		// TODO Auto-generated method stub
         return (int) productoRepository.count();
 	}
 
@@ -98,20 +95,17 @@ public class ProductoServicio implements IProductoServicio{
 
 	@Override
 	public boolean existeProductoConPn(String partNumber) {
-		// TODO Auto-generated method stub
 		return productoRepository.existsBypartNumber(partNumber);
 	}
 
 	@Override
 	public Productos buscarProductoporPartNumber(String partNumber) {
-		// TODO Auto-generated method stub
 		Productos producto = productoRepository.findBypartNumber(partNumber);
 		return producto;
 	}
 
 	@Override
 	public Productos buscarPartNumberAndCategoria(String partNumber, String categoria) {
-		// TODO Auto-generated method stub
 	    Productos producto = productoRepository.findByPartNumberAndCategoria(partNumber, categoria);
 
 		return producto;
@@ -119,7 +113,6 @@ public class ProductoServicio implements IProductoServicio{
 
 	@Override
 	public List<Productos> buscarProductosPorCategoria(String categoria) {
-		// TODO Auto-generated method stub
 		return productoRepository.findByCategoria(categoria);
 	}
 
@@ -146,7 +139,6 @@ public class ProductoServicio implements IProductoServicio{
 
 	@Override
 	public List<Productos> listarlaptop() {
-		// TODO Auto-generated method stub
         // Obtener la lista de productos desde el repositorio
         List<Productos> productos = productoRepository.findByCategoria("laptop");
 
@@ -159,7 +151,6 @@ public class ProductoServicio implements IProductoServicio{
 
 	@Override
 	public List<Productos> listarimpresoras() {
-		// TODO Auto-generated method stub
         // Obtener la lista de productos desde el repositorio
         List<Productos> productos = productoRepository.findByCategoria("impresora");
 
