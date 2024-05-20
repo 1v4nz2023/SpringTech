@@ -154,17 +154,19 @@ crossorigin=""/>
 </section>
 
 
+<div class="container mt-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/}" class="link-success"><i class="fa-solid fa-house"></i></a></li>
+        <li th:class="${listItemClasses}" ><a th:href="@{'/'+${currentPath2}}" th:text="${#strings.capitalize(currentPath2)}" class="link-success text-decoration-none"></a></li>
+        <li class="breadcrumb-item" ><a th:href="@{'/'+${currentPath}}" class="link-success text-decoration-none" th:text="${#strings.capitalize(producto.categoria)}"></i></a></li>
+        <li class="breadcrumb-item active text text-success" th:text="${producto.nombreProducto}"></li>
+    </ol>
+  </nav>
+</div>
 
-<section id="product-section">
-  
-  
- 
-  
-</section>
 
-
-
-
+<section id="product-section"></section>
 
 <section id="partners">
   

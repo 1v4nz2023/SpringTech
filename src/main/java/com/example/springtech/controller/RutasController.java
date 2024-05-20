@@ -1,9 +1,14 @@
 package com.example.springtech.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.example.springtech.modelo.Productos;
+import com.example.springtech.servicio.IProductoServicio;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,6 +17,9 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class RutasController {
+	
+	@Autowired
+    private IProductoServicio productoServicio;
 	
 	
 	@GetMapping({"/index","/","home"})
@@ -46,7 +54,8 @@ public class RutasController {
 	    model.addAttribute("nombre", nombre);
 	    model.addAttribute("apellido", apellido);
 	    model.addAttribute("rol", rol);
-		
+        model.addAttribute("currentPath", "Computadoras");
+
 		
 		return "computadoras";
 	}
@@ -65,7 +74,8 @@ public class RutasController {
 	    model.addAttribute("nombre", nombre);
 	    model.addAttribute("apellido", apellido);
 	    model.addAttribute("rol", rol);
-		
+        model.addAttribute("currentPath", "Oficina");
+
 		
 		return "pc-oficina";
 	}
@@ -85,7 +95,8 @@ public class RutasController {
 	    model.addAttribute("nombre", nombre);
 	    model.addAttribute("apellido", apellido);
 	    model.addAttribute("rol", rol);
-		
+        model.addAttribute("currentPath", "Ingeniería y diseño");
+
 		
 		return "pc-ingenieriadiseño";
 	}	
@@ -106,7 +117,8 @@ public class RutasController {
 	    model.addAttribute("nombre", nombre);
 	    model.addAttribute("apellido", apellido);
 	    model.addAttribute("rol", rol);
-		
+        model.addAttribute("currentPath", "Gamer");
+
 		
 		return "pc-gamer";
 	}	
@@ -115,60 +127,75 @@ public class RutasController {
 	
 
 	@GetMapping("/computadoras/producto")
-	public String producto(HttpServletRequest request,Model model) {
+	public String producto(HttpServletRequest request,@RequestParam("id")String partNumber,Model model) {
 		
 	    HttpSession session = request.getSession();
 	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
 	    String nombre = (String) session.getAttribute("nombre");
 	    String apellido = (String) session.getAttribute("apellido");
 	    String rol = (String) session.getAttribute("rol");
+        Productos producto = productoServicio.buscarProductoporPartNumber(partNumber);
 
 	    // Agregar el rol al modelo para pasarlo a la vista
 	    model.addAttribute("idUsuario", idUsuario);
 	    model.addAttribute("nombre", nombre);
 	    model.addAttribute("apellido", apellido);
 	    model.addAttribute("rol", rol);
-		
+        model.addAttribute("producto", producto);
+        model.addAttribute("currentPath", "computadoras/pc-oficina");
+        model.addAttribute("currentPath2", "computadoras");
+        model.addAttribute("listItemClasses", "breadcrumb-item");
+
 		
 		return "producto";
 	}	
 	
 	
 	@GetMapping("/laptops/producto")
-	public String productolaptops(HttpServletRequest request,Model model) {
+	public String productolaptops(HttpServletRequest request,@RequestParam("id")String partNumber,Model model) {
 		
 	    HttpSession session = request.getSession();
 	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
 	    String nombre = (String) session.getAttribute("nombre");
 	    String apellido = (String) session.getAttribute("apellido");
 	    String rol = (String) session.getAttribute("rol");
+	    
+        Productos producto = productoServicio.buscarProductoporPartNumber(partNumber);
+ 
 
 	    // Agregar el rol al modelo para pasarlo a la vista
 	    model.addAttribute("idUsuario", idUsuario);
 	    model.addAttribute("nombre", nombre);
 	    model.addAttribute("apellido", apellido);
 	    model.addAttribute("rol", rol);
-		
+        model.addAttribute("producto", producto);
+        model.addAttribute("listItemClasses", "breadcrumb-item d-none");
+        model.addAttribute("currentPath", "laptops");
+
 		
 		return "producto";
 	}
 
 	
 	@GetMapping("/impresoras/producto")
-	public String productoimpresoras(HttpServletRequest request,Model model) {
+	public String productoimpresoras(HttpServletRequest request,@RequestParam("id")String partNumber,Model model) {
 		
 	    HttpSession session = request.getSession();
 	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
 	    String nombre = (String) session.getAttribute("nombre");
 	    String apellido = (String) session.getAttribute("apellido");
 	    String rol = (String) session.getAttribute("rol");
+        Productos producto = productoServicio.buscarProductoporPartNumber(partNumber);
 
 	    // Agregar el rol al modelo para pasarlo a la vista
 	    model.addAttribute("idUsuario", idUsuario);
 	    model.addAttribute("nombre", nombre);
 	    model.addAttribute("apellido", apellido);
 	    model.addAttribute("rol", rol);
-		
+        model.addAttribute("producto", producto);
+
+        model.addAttribute("listItemClasses", "breadcrumb-item d-none");
+        model.addAttribute("currentPath", "impresoras");
 		
 		return "producto";
 	}
@@ -187,7 +214,8 @@ public class RutasController {
 	    model.addAttribute("nombre", nombre);
 	    model.addAttribute("apellido", apellido);
 	    model.addAttribute("rol", rol);
-		
+        model.addAttribute("currentPath", "Laptops");
+
 		
 		return "laptops";
 	}	
@@ -208,7 +236,8 @@ public class RutasController {
 	    model.addAttribute("nombre", nombre);
 	    model.addAttribute("apellido", apellido);
 	    model.addAttribute("rol", rol);
-		
+        model.addAttribute("currentPath", "Impresoras");
+
 		
 		return "impresoras";
 	}	

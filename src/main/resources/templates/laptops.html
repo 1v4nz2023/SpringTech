@@ -108,6 +108,7 @@ crossorigin=""/>
     </nav>
   </div>
 
+  
 
 <section id="banners">
   <div class="container text-center mt-4">
@@ -157,6 +158,17 @@ crossorigin=""/>
 
 <section id="computadoras-oficina" class="container">
 
+  <div class="container mt-5">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a th:href="@{/}" class="link-success"><i class="fa-solid fa-house"></i></a></li>
+          <li class="breadcrumb-item active link-success" th:text="${currentPath}"></li>
+      </ol>
+    </nav>
+  </div>
+  
+
+  <h2 class="mt-5">Laptops</h2>
 
 <div class="container d-block justify-content-center mt-5" id="list_productos"></div>
 

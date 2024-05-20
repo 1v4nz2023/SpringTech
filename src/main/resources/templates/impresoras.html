@@ -116,39 +116,27 @@
 
   <!-- IMPRESORAS -->
 
-  <section id="impresoras">
-    <div class="container mt-5">
-      <div class="container d-flex justify-content-between">
-        <div>
-          <h2>Impresoras</h2>
-        </div>
-      </div>
-      <div class="row d-flex justify-content-center" id="impresora-container"></div>
-      <div class="row d-flex justify-content-center" id="impresora-container2"></div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <br>
-    <div>
-      <div class="container d-flex justify-content-center">
-        <nav aria-label="Navegacion de Paginas">
-          <ul class="pagination justify-content-end">
-            <li class="page-item disabled">
-              <a class="page-link text-success" href="#" tabindex="-1">Anterior</a>
-            </li>
-            <li class="page-item"><a class="page-link text-success" href="#">1</a></li>
-            <li class="page-item"><a class="page-link text-success" href="#">2</a></li>
-            <li class="page-item"><a class="page-link text-success" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link text-success" href="#">Siguiente</a>
-            </li>
-          </ul>
-        </nav>
-        </nav>
-      </div>
-    </div>
+  <section id="impresoras"  class="container">
 
+    <div class="container mt-5">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}" class="link-success"><i class="fa-solid fa-house"></i></a></li>
+            <li class="breadcrumb-item active link-success" th:text="${currentPath}"></li>
+        </ol>
+      </nav>
+    </div>
+    
+    <h2 class="mt-5">Impresoras</h2>
+
+    <div class="container d-block justify-content-center mt-5" id="list_productos"></div>
+
+
+    <div class="container d-flex justify-content-between mt-5">
+      <div id="mostrando"></div>
+    <div class="buttons" id="buttons"></div>
+    
+    </div>
   </section>
 
   <section id="partners">
@@ -255,14 +243,9 @@
 
   <script src="javascript/jquery-3.7.1.min.js"></script>
   <script src="javascript/controladorEstilos.js"></script>
-
   <script src="javascript/controladorEstilos.js"></script>
-  <script src="javascript/domnewproducts.js"></script>
-  <script src="javascript/domcomputadoras.js"></script>
-  <script src="javascript/domlaptops.js"></script>
-  <script src="javascript/domimpresoras_nodB.js"></script>
   <script src="javascript/auth.js"></script>
-  <!-- <a th:href="registro}">Registrar</a> -->
+  <script th:src="@{/javascript/obtenerImpresoras.js}"></script>
 
 </body>
 
