@@ -104,6 +104,8 @@ public class ProductoServicio implements IProductoServicio{
 		return producto;
 	}
 
+
+
 	@Override
 	public Productos buscarPartNumberAndCategoria(String partNumber, String categoria) {
 	    Productos producto = productoRepository.findByPartNumberAndCategoria(partNumber, categoria);
@@ -115,6 +117,12 @@ public class ProductoServicio implements IProductoServicio{
 	public List<Productos> buscarProductosPorCategoria(String categoria) {
 		return productoRepository.findByCategoria(categoria);
 	}
+	
+	@Override
+	public List<Productos> buscarProductosPorNombre(String nombreProducto) {
+	    return productoRepository.findByNombreProductoContainingIgnoreCase(nombreProducto);
+	}
+
 
 	@Override
 	public List<Productos> listarPorCategorias() {
@@ -161,6 +169,9 @@ public class ProductoServicio implements IProductoServicio{
 
         return productosOrdenados;
 	}
+
+
+
 
 
 }

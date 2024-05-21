@@ -32,5 +32,9 @@ public interface IProductoServicio {
 	List<Productos> listarlaptop();
 	
 	List<Productos> listarimpresoras();
+	
+    List<Productos> buscarProductosPorNombre(String nombreProducto);
+
+	
 
 }

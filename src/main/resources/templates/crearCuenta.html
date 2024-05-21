@@ -54,23 +54,24 @@
           <!-- Columna 2 -->
           <div class="col-md-4">
             <div class="text-center">
-              <nav class="navbar bg-success">
-                <div class="container-fluid justify-content-center">
-                  <form class="d-flex">
-                    <input
-                      class="form-control me-2"
-                      type="search"
-                      placeholder="Buscar"
-                      aria-label="Search"
-                    />
-                    <button class="btn btn-outline-light" type="submit">
-                      <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                  </form>
-                </div>
-              </nav>
+                <nav class="navbar bg-success">
+                    <div class="container-fluid justify-content-center">
+                        <form class="d-flex" action="/buscar" method="GET">
+                            <input
+                                class="form-control me-2"
+                                type="search"
+                                placeholder="Buscar"
+                                aria-label="Search"
+                                name="nombreProducto"
+                            />
+                            <button class="btn btn-outline-light" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
+                    </div>
+                </nav>
             </div>
-          </div>
+        </div>
           <!-- Columna 3 -->
           <div class="col-md-4">
             <div class="text-center d-flex user-container">

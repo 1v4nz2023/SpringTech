@@ -142,7 +142,7 @@ public class RutasController {
 	    model.addAttribute("apellido", apellido);
 	    model.addAttribute("rol", rol);
         model.addAttribute("producto", producto);
-        model.addAttribute("currentPath", "computadoras/pc-oficina");
+        model.addAttribute("currentPath", "computadoras/"+producto.getCategoria());
         model.addAttribute("currentPath2", "computadoras");
         model.addAttribute("listItemClasses", "breadcrumb-item");
 
@@ -172,6 +172,41 @@ public class RutasController {
         model.addAttribute("listItemClasses", "breadcrumb-item d-none");
         model.addAttribute("currentPath", "laptops");
 
+		
+		return "producto";
+	}
+
+	
+	@GetMapping("/buscar/producto")
+	public String buscarProductos(HttpServletRequest request,@RequestParam("id")String partNumber,Model model) {
+		
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+	    
+        Productos producto = productoServicio.buscarProductoporPartNumber(partNumber);
+ 
+
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+        model.addAttribute("producto", producto);
+
+        model.addAttribute("listItemClasses", "breadcrumb-item d-none");
+
+        if(producto.getCategoria().equals("laptop") ||producto.getCategoria().equals("impresora") ) {
+            model.addAttribute("currentPath", producto.getCategoria()+"s" );
+
+        }
+        else {
+            model.addAttribute("currentPath", "computadoras/" + producto.getCategoria() );
+
+
+        }
 		
 		return "producto";
 	}
@@ -242,6 +277,22 @@ public class RutasController {
 		return "impresoras";
 	}	
 	
+	@GetMapping("/buscar")
+	public String buscar(HttpServletRequest request,Model model) {
+	    HttpSession session = request.getSession();
+	    Integer idUsuario = (Integer) session.getAttribute("idUsuario");
+	    String nombre = (String) session.getAttribute("nombre");
+	    String apellido = (String) session.getAttribute("apellido");
+	    String rol = (String) session.getAttribute("rol");
+	    // Agregar el rol al modelo para pasarlo a la vista
+	    model.addAttribute("idUsuario", idUsuario);
+	    model.addAttribute("nombre", nombre);
+	    model.addAttribute("apellido", apellido);
+	    model.addAttribute("rol", rol);
+        model.addAttribute("currentPath", "Resultados de la búsqueda");
+
+		return "buscar";
+	}
 	
 	@GetMapping("/garantía")
 	public String garantia(HttpServletRequest request,Model model) {
@@ -428,6 +479,8 @@ public class RutasController {
 	    return "redirect:/Login";
 	}
 	
+	
+
 
 	
 }
