@@ -67,19 +67,16 @@
               </nav>
             </div>
           </div>
+
           <!-- Columna 3 -->
           <div class="col-md-4">
             <div class="text-center d-flex user-container">
               <div class="cart-container">
-                <a
-                  id="btn-login"
-                  th:href="@{/Login}"
-                  class="btn btn-light text-decoration-none"
-                >
+                <a id="btn-login" th:href="@{/Login}" th:class="${class}">
                   <i class="fa-solid fa-user icono"></i>
                   <span class="p-icono">Iniciar Sesión</span>
                 </a>
-                <div class="dropdown d-none" id="listaopciones">
+                <div th:class="${dropdown}" id="listaopciones">
                   <button
                     class="btn btn-light dropdown-toggle text-success"
                     type="button"
@@ -139,6 +136,7 @@
         </div>
       </div>
     </header>
+
 
     <div class="container-fluid d-flex bg-dark posicion">
       <nav class="navbar navbar-expand-lg navbar-dark">
@@ -422,9 +420,7 @@
 
     <script th:src="@{/javascript/jquery-3.7.1.min.js}"></script>
     <script th:src="@{/javascript/controladorEstilos.js}"></script>
-
     <script th:src="@{/javascript/controladorEstilos.js}"></script>
-    <script th:src="@{/javascript/auth.js}"></script>
     <script th:src="@{/javascript/obtenerBusqueda.js}"></script>
   </body>
 </html>

@@ -74,12 +74,12 @@
                 <a
                   id="btn-login"
                   th:href="@{/Login}"
-                  class="btn btn-light text-decoration-none"
+                  th:class="${class}"
                 >
                   <i class="fa-solid fa-user icono"></i>
                   <span class="p-icono">Iniciar Sesión</span>
                 </a>
-                <div class="dropdown d-none" id="listaopciones">
+                <div th:class="${dropdown}" id="listaopciones">
                   <button
                     class="btn btn-light dropdown-toggle text-success"
                     type="button"
@@ -426,7 +426,6 @@
 
     <script th:src="@{/javascript/controladorEstilos.js}"></script>
     <script th:src="@{/javascript/domcomputadoras.js}"></script>
-    <script th:src="@{/javascript/auth.js}"></script>
     <script th:src="@{/javascript/obtenerProductoporCod.js}"></script>
   </body>
 </html>

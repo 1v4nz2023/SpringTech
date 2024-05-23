@@ -52,12 +52,8 @@
           <!-- Columna 1 -->
           <div class="col-md-4">
             <div class="text-center logo-container">
-              <img
-                src="../static/images/logo.png"
-                alt="logo"
-                class="logo-img"
-              />
-              <a class="logo-text" href="./index.html">
+              <img th:src="@{/images/logo.png}" alt="logo" class="logo-img" />
+              <a class="logo-text" th:href="@{/index}">
                 <h3>SpringTech</h3>
               </a>
             </div>
@@ -65,45 +61,94 @@
           <!-- Columna 2 -->
           <div class="col-md-4">
             <div class="text-center">
-                <nav class="navbar bg-success">
-                    <div class="container-fluid justify-content-center">
-                        <form class="d-flex" action="/buscar" method="GET">
-                            <input
-                                class="form-control me-2"
-                                type="search"
-                                placeholder="Buscar"
-                                aria-label="Search"
-                                name="nombreProducto"
-                            />
-                            <button class="btn btn-outline-light" type="submit">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
-                        </form>
-                    </div>
-                </nav>
+              <nav class="navbar bg-success">
+                <div class="container-fluid justify-content-center">
+                  <form class="d-flex" action="/buscar" method="GET">
+                    <input
+                      class="form-control me-2"
+                      type="search"
+                      placeholder="Buscar"
+                      aria-label="Search"
+                      name="nombreProducto"
+                    />
+                    <button class="btn btn-outline-light" type="submit">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </form>
+                </div>
+              </nav>
             </div>
-        </div>
+          </div>
+
           <!-- Columna 3 -->
           <div class="col-md-4">
             <div class="text-center d-flex user-container">
               <div class="cart-container">
-                <button type="button" class="btn btn-light">
+                <a id="btn-login" th:href="@{/Login}" th:class="${class}">
                   <i class="fa-solid fa-user icono"></i>
                   <span class="p-icono">Iniciar Sesión</span>
-                </button>
+                </a>
+                <div th:class="${dropdown}" id="listaopciones">
+                  <button
+                    class="btn btn-light dropdown-toggle text-success"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    id="title"
+                    th:text="${nombre + ' ' + apellido}"
+                  ></button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        th:href="@{'/' + ${rol}}"
+                        id="cuenta"
+                        >Mi cuenta</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#" id="#regvisitas"
+                        >Historial de compras</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#" id="#regdelivery"
+                        >Garantías</a
+                      >
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#" id="#regdelivery"
+                        >Reclamos</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        th:href="@{/logout}"
+                        id="btn-logout"
+                        >Cerrar sesión</a
+                      >
+                    </li>
+                  </ul>
+                </div>
               </div>
+
               <div class="login-container">
-                <button type="button" class="btn btn-light">
+                <a
+                  th:href="@{/Cart}"
+                  class="btn btn-light text-decoration-none"
+                >
                   <i class="fa-solid fa-cart-shopping icono">
                     <span class="p-icono">$ 0.00</span></i
                   >
-                </button>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </header>
+
 
     <div class="container-fluid d-flex bg-dark posicion">
       <nav class="navbar navbar-expand-lg navbar-dark">

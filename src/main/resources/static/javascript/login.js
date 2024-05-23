@@ -25,11 +25,6 @@ function submitForm(event) {
       }).then(() => {
 
         window.location.href= response.data.ruta;
-
-
-        localStorage.setItem("isLoggedIn", true);
-        // localStorage.setItem("nombres", response.data.nombre);
-        // localStorage.setItem("apellidos", response.data.apellido);
       });
     })
     .catch((error) => {
