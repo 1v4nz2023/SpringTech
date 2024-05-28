@@ -1,10 +1,13 @@
 package com.example.springtech.modelo;
 
 
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -12,7 +15,7 @@ import lombok.ToString;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@ToString(exclude = "pedidos")
 
 public class Usuario {
 	
@@ -25,6 +28,12 @@ public class Usuario {
 	String correo;
 	String password;
 	String rol;
+	
+	
+    @OneToMany(mappedBy = "usuario")
+    Set<Pedido> pedidos;
+    
+    
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}

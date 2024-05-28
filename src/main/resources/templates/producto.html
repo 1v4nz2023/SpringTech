@@ -49,33 +49,29 @@
           <!-- Columna 2 -->
           <div class="col-md-4">
             <div class="text-center">
-                <nav class="navbar bg-success">
-                    <div class="container-fluid justify-content-center">
-                        <form class="d-flex" action="/buscar" method="GET">
-                            <input
-                                class="form-control me-2"
-                                type="search"
-                                placeholder="Buscar"
-                                aria-label="Search"
-                                name="nombreProducto"
-                            />
-                            <button class="btn btn-outline-light" type="submit">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
-                        </form>
-                    </div>
-                </nav>
+              <nav class="navbar bg-success">
+                <div class="container-fluid justify-content-center">
+                  <form class="d-flex" action="/buscar" method="GET">
+                    <input
+                      class="form-control me-2"
+                      type="search"
+                      placeholder="Buscar"
+                      aria-label="Search"
+                      name="nombreProducto"
+                    />
+                    <button class="btn btn-outline-light" type="submit">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                  </form>
+                </div>
+              </nav>
             </div>
-        </div>
+          </div>
           <!-- Columna 3 -->
           <div class="col-md-4">
             <div class="text-center d-flex user-container">
               <div class="cart-container">
-                <a
-                  id="btn-login"
-                  th:href="@{/Login}"
-                  th:class="${class}"
-                >
+                <a id="btn-login" th:href="@{/Login}" th:class="${class}">
                   <i class="fa-solid fa-user icono"></i>
                   <span class="p-icono">Iniciar Sesión</span>
                 </a>
@@ -292,7 +288,59 @@
     </div>
 
     <section id="product-section"></section>
+    <!-- Product Review -->
+    <div class="card mt-3 container">
+      <div class="card-body">
+        <h3 class="card-title">Reseñas del Producto</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div th:if="${#lists.isEmpty(pedido)}">
+              <p class="card-text text-muted my-5">
+                Este producto aún no cuenta con reseñas.
+              </p>
+            </div>
+              <div th:each="pedido : ${pedido}" class="card mb-3">
+                  <div class="card-body">
+                      <h5 class="card-title " th:text="${'Por: '+pedido.usuario.nombre + ' ' + pedido.usuario.apellidos}"></h5>
+                      <h7 class="card-title mt-2" th:text="${#strings.substring(pedido.fechaPedido, 0, #strings.length(pedido.fechaPedido)-16)}"></h7>
 
+                      <p class="card-text" th:text="${pedido.reseña}"></p>
+
+                      <div th:switch="${pedido.calificacion}">
+                          <div th:case="1">
+                              <i class="fas fa-star text-warning"></i>
+                          </div>
+                          <div th:case="2">
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                          </div>
+                          <div th:case="3">
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                          </div>
+                          <div th:case="4">
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                          </div>
+                          <div th:case="5">
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                              <i class="fas fa-star text-warning"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+
+    </div>
     <section id="partners">
       <div class="container text-center my-5">
         <div class="row align-items-center">

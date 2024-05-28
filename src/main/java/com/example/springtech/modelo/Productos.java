@@ -1,9 +1,12 @@
 package com.example.springtech.modelo;
 
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -14,6 +17,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Productos {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      Integer idProducto;
@@ -23,9 +27,13 @@ public class Productos {
      Double precio;
      Integer stock;
      String descripcion;
-     String reseña;
      String Marca;
      String url;
+     String garantia;
+     
+
+     @OneToMany(mappedBy = "producto")
+     Set<Pedido> pedidos;
      
 	public Integer getIdProducto() {
 		return idProducto;
@@ -69,12 +77,7 @@ public class Productos {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getReseña() {
-		return reseña;
-	}
-	public void setReseña(String reseña) {
-		this.reseña = reseña;
-	}
+	
 	public String getMarca() {
 		return Marca;
 	}
@@ -86,6 +89,12 @@ public class Productos {
 	}
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	public String getGarantia() {
+		return garantia;
+	}
+	public void setGarantia(String garantia) {
+		this.garantia = garantia;
 	}
     
 
