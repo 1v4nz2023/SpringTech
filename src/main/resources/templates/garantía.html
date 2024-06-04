@@ -17,6 +17,12 @@
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
   <title>SpringTech - Garantía</title>
+  <style>
+    .error {
+      color: red;
+      font-size: 85%;
+    }
+  </style>
 </head>
 
 <body>
@@ -86,7 +92,8 @@
   <div class="container-fluid d-flex bg-dark posicion">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -182,12 +189,71 @@
     <div class="row justify-content-center">
       <div class="col-md-6 text-center">
         <p>Por favor haga click debajo para iniciar con el proceso de garantía</p>
-        <a th:href="@{/formulario-garantia}">
-          <button class="btn btn-success">Formulario</button>
-        </a>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#reporteModal">Formulario</button>
       </div>
     </div>
   </section>
+
+  <!-- Modal -->
+  <div class="modal fade" id="reporteModal" tabindex="-1" aria-labelledby="reporteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reporteModalLabel">Formulario de Reporte de Problema</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenido del formulario de garantía -->
+          <form id="reporteForm" novalidate>
+            <div class="mb-3">
+              <label for="nombreCompleto" class="form-label">Nombre Completo</label>
+              <input type="text" class="form-control" id="nombreCompleto" required>
+              <div class="error" id="nombreError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="correo" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="correo" required>
+              <div class="error" id="correoError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="telefono" required>
+              <div class="error" id="telefonoError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="nombreProducto" class="form-label">Nombre del Producto</label>
+              <input type="text" class="form-control" id="nombreProducto" required>
+              <div class="error" id="productoError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="numSerie" class="form-label">Número de Serie</label>
+              <input type="text" class="form-control" id="numSerie" required>
+              <div class="error" id="numSerieError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="fechaCompra" class="form-label">Fecha de Compra</label>
+              <input type="date" class="form-control" id="fechaCompra" required>
+              <div class="error" id="fechaCompraError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="detallesProblema" class="form-label">Detalles del Problema</label>
+              <textarea class="form-control" id="detallesProblema" rows="3" required></textarea>
+              <div class="error" id="detallesError"></div>
+            </div>
+            <div class="mb-3">
+              <label for="adjuntarArchivo" class="form-label">Adjuntar Recibo y Evidencia</label>
+              <input type="file" class="form-control" id="adjuntarArchivo" required>
+              <div class="error" id="archivoError"></div>
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-success">Enviar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section id="partners">
 
@@ -300,6 +366,7 @@
   <script src="javascript/domlaptops.js"></script>
   <script src="javascript/domimpresoras.js"></script>
   <script src="javascript/auth.js"></script>
+  <script src="javascript/garantia.js"></script>
   <!-- <a th:href="registro}">Registrar</a> -->
 
 </body>
