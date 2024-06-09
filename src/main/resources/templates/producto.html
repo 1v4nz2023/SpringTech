@@ -288,7 +288,7 @@
     </div>
 
     <section id="product-section"></section>
-    <!-- Product Review -->
+    <!-- Product Reviews -->
     <div class="card mt-3 container">
       <div class="card-body">
         <h3 class="card-title">Reseñas del Producto</h3>
@@ -305,7 +305,7 @@
                       <h7 class="card-title mt-2" th:text="${#strings.substring(pedido.fechaPedido, 0, #strings.length(pedido.fechaPedido)-16)}"></h7>
 
                       <p class="card-text" th:text="${pedido.reseña}"></p>
-
+ 
                       <div th:switch="${pedido.calificacion}">
                           <div th:case="1">
                               <i class="fas fa-star text-warning"></i>
