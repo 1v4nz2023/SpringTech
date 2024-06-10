@@ -137,7 +137,6 @@
       </div>
     </header>
 
-
     <div class="container-fluid d-flex bg-dark posicion">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -270,21 +269,20 @@
           >
             <div class="card" style="width: 18rem">
               <div>
-                <img
+                <a type="button"  id="showusers">
+                  <img
                   th:src="@{/images/user.png}"
                   class="setimg my-2"
                   alt="userfoto"
                 />
+                </a>
+
               </div>
               <div class="card-body">
                 <h5 class="card-title">Lista de usuarios</h5>
                 <p class="card-text">Mostrar usuarios registrados</p>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success" id="showusers">
-                  Click aquí
-                </button>
 
-                <!-- Modal -->
                 <div
                   class="modal fade"
                   id="exampleModal"
@@ -425,7 +423,8 @@
             <h6 class="text-footer my-3">
               Av. Garcilaso de la Vega 1372 <br />
               Galería Plaza Tec <br />
-              Lima 15004 <br />s 01 2502926
+              Lima 15004 <br />
+              01 2502926
             </h6>
           </div>
           <!-- Columna 2 -->
