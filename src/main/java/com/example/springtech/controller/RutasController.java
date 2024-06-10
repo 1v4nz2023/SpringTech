@@ -1,16 +1,12 @@
 package com.example.springtech.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.springtech.modelo.Pedido;
 import com.example.springtech.modelo.Productos;
-import com.example.springtech.servicio.IPedidoServicio;
 import com.example.springtech.servicio.IProductoServicio;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,10 +18,6 @@ public class RutasController {
 
     @Autowired
     private IProductoServicio productoServicio;
-    
-    
-    @Autowired
-    private IPedidoServicio pedidoServicio;
 
     @GetMapping({"/index", "/", "home"})
     public String index(HttpServletRequest request, HttpServletResponse response,Model model) {
@@ -116,13 +108,9 @@ public class RutasController {
     public String productoImpresoras(HttpServletRequest request, @RequestParam("id") String partNumber,HttpServletResponse response, Model model) {
         setupModelWithSessionAttributes(request, model);
         Productos producto = productoServicio.buscarProductoporPartNumber(partNumber);
-        List<Pedido> pedido = pedidoServicio.buscarPedidosPorPartNumber(partNumber);
         model.addAttribute("producto", producto);
-        model.addAttribute("pedido", pedido);
         model.addAttribute("listItemClasses", "breadcrumb-item d-none");
         model.addAttribute("currentPath", "impresoras");
-
-
         setNoCacheHeaders(response);
 
         return "producto";
