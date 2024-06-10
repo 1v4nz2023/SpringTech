@@ -136,6 +136,30 @@ public class UsuarioControlador {
 
 	    return ResponseEntity.ok(usuario);
 	}
+	
+	@PutMapping("/usuario/{id}")
+	public ResponseEntity<Usuario> actualizarUsuarios(@PathVariable Integer id, @RequestBody Usuario usuarioRecibido) {
+	    Usuario usuario = usuarioServicio.buscarUsuarioPorId(id);
+	    if (usuario == null)
+	        throw new RecursoNoEncontradoExcepcion("El id recibido no existe: " + id);
+
+	    usuario.setNombre(usuarioRecibido.getNombre());
+	    usuario.setApellidos(usuarioRecibido.getApellidos());
+	    usuario.setCorreo(usuarioRecibido.getCorreo());
+	    usuario.setRol(usuarioRecibido.getRol());
+
+	    // Verificar si la contraseña recibida es diferente a la contraseña almacenada en la BD
+	    if (!usuarioRecibido.getPassword().equals(usuario.getPassword())) {
+	        // Encriptar la nueva contraseña antes de guardarla
+	        String hashedPassword = hashPassword(usuarioRecibido.getPassword());
+	        usuario.setPassword(hashedPassword);
+	    }
+			//last commit
+	    usuarioServicio.actualizarUsuario(usuario);
+	    return ResponseEntity.ok(usuario);
+	}
+
+	
 
 	   public String hashPassword(String password) {
 	        try {
