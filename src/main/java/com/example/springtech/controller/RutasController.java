@@ -34,6 +34,7 @@ public class RutasController {
 
         return "index";
     }
+    
 
     @GetMapping("/computadoras")
     public String computadoras(HttpServletRequest request,  HttpServletResponse response,Model model) {

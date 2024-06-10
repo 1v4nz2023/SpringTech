@@ -25,6 +25,13 @@ public class PasswordResetController {
 
     @PostMapping("/reset-password")
     public ResponseEntity<Usuario> resetPassword(@RequestBody PasswordResetRequest request) {
+    	
+    	
+    	if(request.getEmail()==null || request.getEmail().isEmpty() || request.getNewPassword()==null || request.getNewPassword().isEmpty()) {
+    		throw new RecursoNoEncontradoExcepcion("No se admiten campos vacíos");
+
+    	}
+    	
         Usuario usuario = usuarioServicio.buscarUsuarioPorCorreo(request.getEmail());
         if (usuario == null) {
     		throw new RecursoNoEncontradoExcepcion("No se encontro el usuario");
