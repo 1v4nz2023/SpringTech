@@ -177,164 +177,113 @@
         </div>
       </nav>
     </div>
-    <!-- FORMULARIO INGRESAR PRODUCTO -->
+   <!-- FORMULARIO INGRESAR PRODUCTO -->
 
-    <section id="formIngresarProducto" class="container text-center my-5">
-      <h3 class="text text-success">Ingresar Producto</h3>
-      <div class="container text-center mt-5">
-        <div class="row justify-content-center">
-          <div class="col-lg-6 p-4 bg-light shadow">
-            <div class="mb-3">
-              <input
-                type="text"
-                class="form-control text-center"
-                id="nombreProducto"
-                placeholder="NOMBRE DEL PRODUCTO"
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="text"
-                class="form-control text-center"
-                id="numeroParte"
-                placeholder="NÚMERO DE SERIE"
-                maxlength="17"
-                oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 17)"
-              />
-              <small class="text-danger"
-                >Solo puede ingresar números y debe tener exactamente 17
-                caracteres.</small
-              >
-            </div>
-            <div class="mb-3">
-              <select class="form-select text-center" id="categoria">
-                <option selected disabled>CATEGORÍA DEL PRODUCTO</option>
-                <option value="computadoras_oficina">
-                  COMPUTADORAS DE OFICINA
-                </option>
-                <option value="computadoras_ingenieria_diseno">
-                  COMPUTADORAS DE INGENIERÍA Y DISEÑO
-                </option>
-                <option value="computadoras_gamer">COMPUTADORAS GAMER</option>
-                <option value="laptops">LAPTOPS</option>
-                <option value="impresoras">IMPRESORAS</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <div class="input-group">
-                <span class="input-group-text">S/.</span>
-                <input
-                  type="text"
-                  class="form-control text-center"
-                  id="precio"
-                  placeholder="PRECIO"
-                />
-              </div>
-            </div>
-            <div class="mb-3">
-              <input
-                type="number"
-                class="form-control text-center"
-                id="stock"
-                placeholder="STOCK"
-                min="0"
-                step="1"
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="text"
-                class="form-control text-center"
-                id="descripcion"
-                placeholder="DESCRIPCION"
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="url"
-                class="form-control text-center"
-                id="url"
-                placeholder="URL"
-              />
-            </div>
-            <div class="mb-3">
-              <select class="form-select text-center" id="marca">
-                <option selected disabled>MARCA</option>
-                <option value="HP">HP</option>
-                <option value="RAZER">RAZER</option>
-                <option value="BROTHER">BROTHER</option>
-                <option value="EPSON">EPSON</option>
-                <option value="MSI">MSI</option>
-                <option value="LENOVO">LENOVO</option>
-                <option value="TOSHIBA">TOSHIBA</option>
-                <option value="TP-LINK">TP-LINK</option>
-              </select>
-            </div>
-            <div class="d-grid gap-2">
-              <button
-                type="button"
-                class="btn btn-success btn-sm"
-                id="guardarBtn"
-              >
-                GUARDAR
-              </button>
-              <a th:href="@{/admin}" class="btn btn-danger btn-sm">CERRAR</a>
-            </div>
+<section id="formIngresarProducto" class="container text-center my-5">
+  <h3 class="text text-success">Ingresar Producto</h3>
+  <div class="container text-center mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 p-4 bg-light shadow">
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control text-center"
+            id="nombreProducto"
+            placeholder="NOMBRE DEL PRODUCTO"
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control text-center"
+            id="partNumber"
+            placeholder="NÚMERO DE PARTE"
+          />
+        </div>
+        <div class="mb-3">
+          <select class="form-select text-center" id="categoria">
+            <option selected disabled>CATEGORÍA DEL PRODUCTO</option>
+            <option value="pc-oficina">COMPUTADORAS DE OFICINA</option>
+            <option value="pc-ingenieriadiseño">COMPUTADORAS DE INGENIERÍA Y DISEÑO</option>
+            <option value="pc-gamer">COMPUTADORAS GAMER</option>
+            <option value="laptop">LAPTOPS</option>
+            <option value="impresora">IMPRESORAS</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text">S/.</span>
+            <input
+              type="text"
+              class="form-control text-center"
+              id="precio"
+              placeholder="PRECIO"
+            />
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="partners">
-      <div class="container text-center my-5">
-        <div class="row align-items-center">
-          <div class="carousel-item active d-flex">
-            <div class="col-md-2 col-2">
-              <img
-                src="https://cyccomputer.pe/img/m/87.jpg"
-                class="d-block w-100 partner"
-                alt="partner1"
-              />
-            </div>
-            <div class="col-md-2 col-2">
-              <img
-                src="https://cyccomputer.pe/img/m/203.jpg"
-                class="d-block w-100 partner"
-                alt="partner2"
-              />
-            </div>
-            <div class="col-md-2 col-2">
-              <img
-                src="https://cyccomputer.pe/img/m/631.jpg"
-                class="d-block w-100 partner"
-                alt="partner3"
-              />
-            </div>
-            <div class="col-md-2 col-2">
-              <img
-                src="https://cyccomputer.pe/img/m/24.jpg"
-                class="d-block w-100 partner"
-                alt="partner4"
-              />
-            </div>
-            <div class="col-md-2 col-2">
-              <img
-                src="https://cyccomputer.pe/img/m/126.jpg"
-                class="d-block w-100 partner"
-                alt="partner5"
-              />
-            </div>
-            <div class="col-md-2 col-2">
-              <img
-                src="https://cyccomputer.pe/img/m/129.jpg"
-                class="d-block w-100 partner"
-                alt="partner6"
-              />
-            </div>
-          </div>
+        <div class="mb-3">
+          <input
+            type="number"
+            class="form-control text-center"
+            id="stock"
+            placeholder="STOCK"
+            min="0"
+            step="1"
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control text-center"
+            id="descripcion"
+            placeholder="DESCRIPCION"
+          />
+        </div>
+        <div class="mb-3">
+          <input
+            type="url"
+            class="form-control text-center"
+            id="urlProducto"
+            placeholder="URL"
+          />
+        </div>
+        <div class="mb-3">
+          <select class="form-select text-center" id="marca">
+            <option selected disabled>MARCA</option>
+            <option value="HP">HP</option>
+            <option value="ASUS">ASUS</option>
+            <option value="PROPIA">PROPIA</option>
+            <option value="RAZER">RAZER</option>
+            <option value="BROTHER">BROTHER</option>
+            <option value="EPSON">EPSON</option>
+            <option value="MSI">MSI</option>
+            <option value="LENOVO">LENOVO</option>
+            <option value="TOSHIBA">TOSHIBA</option>
+            <option value="TP-LINK">TP-LINK</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control text-center"
+            id="garantia"
+            placeholder="GARANTÍA"
+          />
+        </div>
+        <div class="d-grid gap-2">
+          <button
+            type="button"
+            class="btn btn-success btn-sm"
+            id="guardarBtn"
+          >
+            GUARDAR
+          </button>
+          <a th:href="@{/admin}" class="btn btn-danger btn-sm">CERRAR</a>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <footer>
       <div class="container-fluid bg-success py-5">
@@ -413,12 +362,10 @@
     </footer>
 
     <script th:src="@{/javascript/jquery-3.7.1.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script th:src="@{/javascript/controladorEstilos.js}"></script>
+    <script th:src="@{/javascript/añadirProductos.js}"></script>
 
-    <script th:src="@{/javascript/controladorEstilos.js}"></script>
-    <script th:src="@{/javascript/domnewproducts.js}"></script>
-    <script th:src="@{/javascript/domcomputadoras.js}"></script>
-    <script th:src="@{/javascript/domlaptops.js}"></script>
-    <script th:src="@{/javascript/domimpresoras.js}"></script>
   </body>
 </html>
