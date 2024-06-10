@@ -26,6 +26,7 @@ import com.example.springtech.excepciones.RecursoNoEncontradoExcepcion;
 import com.example.springtech.modelo.Usuario;
 import com.example.springtech.servicio.IUsuarioServicio;
 
+import io.micrometer.common.util.StringUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -88,24 +89,54 @@ public class UsuarioControlador {
 	@PutMapping("/usuarios/{id}")
 	public ResponseEntity<Usuario> actualizarUsuario(@PathVariable Integer id, @RequestBody Usuario usuarioRecibido) {
 	    Usuario usuario = usuarioServicio.buscarUsuarioPorId(id);
-	    if (usuario == null)
+	    if (usuario == null) {
 	        throw new RecursoNoEncontradoExcepcion("El id recibido no existe: " + id);
-
-	    usuario.setNombre(usuarioRecibido.getNombre());
-	    usuario.setApellidos(usuarioRecibido.getApellidos());
-	    usuario.setCorreo(usuarioRecibido.getCorreo());
-	    usuario.setRol(usuarioRecibido.getRol());
-
-	    // Verificar si la contraseña recibida es diferente a la contraseña almacenada en la BD
-	    if (!usuarioRecibido.getPassword().equals(usuario.getPassword())) {
-	        // Encriptar la nueva contraseña antes de guardarla
-	        String hashedPassword = hashPassword(usuarioRecibido.getPassword());
-	        usuario.setPassword(hashedPassword);
 	    }
-			//last commit
-	    usuarioServicio.actualizarUsuario(usuario);
+
+	    // Verificar si se proporciona la contraseña actual y la nueva contraseña
+	    if (!StringUtils.isEmpty(usuarioRecibido.getPassword()) && !StringUtils.isEmpty(usuarioRecibido.getNewpassword())) {
+	        // Verificar si la contraseña actual es correcta
+	        String hashedPassword = hashPassword(usuarioRecibido.getPassword());
+	        if (!hashedPassword.equals(usuario.getPassword())) {
+	            throw new RecursoNoEncontradoExcepcion("La contraseña ingresada no coincide con la almacenada");
+	        }
+
+	        // Encriptar la nueva contraseña antes de guardarla
+	        String hashedNewPassword = hashPassword(usuarioRecibido.getNewpassword());
+	        usuario.setPassword(hashedNewPassword);
+	    } else if (!StringUtils.isEmpty(usuarioRecibido.getPassword()) || !StringUtils.isEmpty(usuarioRecibido.getNewpassword())) {
+	        // Si se proporciona solo una de las contraseñas, lanzar una excepción
+			throw new RecursoNoEncontradoExcepcion("Debe proporcionar tanto la contraseña actual como la nueva contraseña");
+
+	    }
+
+	    // Actualizar los demás datos del usuario si no hay campos vacíos
+	    if (!StringUtils.isEmpty(usuarioRecibido.getNombre())) {
+	        usuario.setNombre(usuarioRecibido.getNombre());
+	    }
+	    if (!StringUtils.isEmpty(usuarioRecibido.getApellidos())) {
+	        usuario.setApellidos(usuarioRecibido.getApellidos());
+	    }
+	    if (!StringUtils.isEmpty(usuarioRecibido.getCorreo())) {
+	        usuario.setCorreo(usuarioRecibido.getCorreo());
+	    }
+	    if (!StringUtils.isEmpty(usuarioRecibido.getRol())) {
+	        usuario.setRol(usuarioRecibido.getRol());
+	    }
+
+	    // Guardar el usuario solo si no hay campos vacíos
+	    if (!StringUtils.isEmpty(usuarioRecibido.getPassword()) || !StringUtils.isEmpty(usuarioRecibido.getNewpassword()) ||
+	        !StringUtils.isEmpty(usuarioRecibido.getNombre()) || !StringUtils.isEmpty(usuarioRecibido.getApellidos()) ||
+	        !StringUtils.isEmpty(usuarioRecibido.getCorreo()) || !StringUtils.isEmpty(usuarioRecibido.getRol())) {
+	        usuarioServicio.actualizarUsuario(usuario);
+	    } else {
+			throw new RecursoNoEncontradoExcepcion("Debe proporcionar al menos un campo para actualizar");
+
+	    }
+
 	    return ResponseEntity.ok(usuario);
 	}
+
 	   public String hashPassword(String password) {
 	        try {
 	            MessageDigest digest = MessageDigest.getInstance("SHA-256");

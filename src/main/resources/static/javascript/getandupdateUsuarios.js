@@ -150,8 +150,11 @@ function mostrarModalEdicion(usuario) {
                         <input type="email" id="correo" name="correo" value="${usuario.correo}" class="form-control"><br>
                         <label for="contraseña">Contraseña:</label><br>
                         <input type="password" id="contraseña" name="contraseña" value="${usuario.password}" class="form-control"><br>
+                        <label for="contraseña">Nueva Contraseña:</label><br>
+                        <input type="password" id="newcontraseña" name="newcontraseña" value="" class="form-control"><br>
                         <label for="rol">Rol:</label><br>
                         <input type="text" id="rol" name="rol" value="${usuario.rol}" class="form-control"><br><br>
+
                         <div class="container text-center">
                             <button type="submit" class="btn btn-success">Guardar Cambios</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -174,6 +177,7 @@ function mostrarModalEdicion(usuario) {
     var email = $("#correo").val().trim();
     var password = $("#contraseña").val().trim();
     var rol = $("#rol").val().trim();
+    var newpassword = $("#newcontraseña").val().trim();
 
     const data = {
       nombre: nombres,
@@ -181,6 +185,8 @@ function mostrarModalEdicion(usuario) {
       correo: email,
       password: password,
       rol: rol,
+      newpassword:  newpassword,
+
     };
     try {
       const response = await axios.put(

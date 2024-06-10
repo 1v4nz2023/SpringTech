@@ -137,7 +137,6 @@
       </div>
     </header>
 
-
     <div class="container-fluid d-flex bg-dark posicion">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -270,57 +269,18 @@
           >
             <div class="card" style="width: 18rem">
               <div>
-                <img
-                  th:src="@{/images/user.png}"
-                  class="setimg my-2"
-                  alt="userfoto"
-                />
+                <!-- Button trigger modal -->
+                <a type="button" id="showusers" class="btn btn-success">
+                  <img
+                    th:src="@{/images/user.png}"
+                    class="setimg my-2"
+                    alt="userfoto"
+                  />
+                </a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Lista de usuarios</h5>
                 <p class="card-text">Mostrar usuarios registrados</p>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success" id="showusers">
-                  Click aquí
-                </button>
-
-                <!-- Modal -->
-                <div
-                  class="modal fade"
-                  id="exampleModal"
-                  tabindex="-1"
-                  aria-labelledby="exampleModalLabel"
-                  aria-hidden="true"
-                >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">
-                          Modal title
-                        </h1>
-                        <button
-                          type="button"
-                          class="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
-                      <div class="modal-body">...</div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                          Save changes
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -330,18 +290,17 @@
           >
             <div class="card" style="width: 18rem">
               <div>
-                <img
-                  th:src="@{/images/ingreso.png}"
-                  class="setimg my-2"
-                  alt="userfoto"
-                />
+                <a th:href="@{/addProductos}" class="btn btn-success">
+                  <img
+                    th:src="@{/images/ingreso.png}"
+                    class="setimg my-2"
+                    alt="userfoto"
+                  />
+                </a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Nuevos Productos</h5>
                 <p class="card-text">Ingresa los productos</p>
-                <a th:href="@{/addProductos}" class="btn btn-success"
-                  >Click aquí</a
-                >
               </div>
             </div>
           </div>
@@ -351,18 +310,16 @@
           >
             <div class="card" style="width: 18rem">
               <div>
-                <img
-                  th:src="@{/images/inventario.png}"
-                  class="setimg my-2"
-                  alt="userfoto"
-                />
+                <a th:href="@{/editProductos}" class="btn btn-success">
+                  <img
+                    th:src="@{/images/inventario.png}"
+                    class="setimg my-2"
+                    alt="userfoto"
+                /></a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Productos</h5>
                 <p class="card-text">Edita los productos</p>
-                <a th:href="@{/editProductos}" class="btn btn-success"
-                  >Click aquí</a
-                >
               </div>
             </div>
           </div>
@@ -374,16 +331,16 @@
           >
             <div class="card" style="width: 18rem">
               <div>
-                <img
-                  th:src="@{/images/warranty.png}"
-                  class="setimg my-2"
-                  alt="userfoto"
-                />
+                <a href="#" class="btn btn-success">
+                  <img
+                    th:src="@{/images/warranty.png}"
+                    class="setimg my-2"
+                    alt="userfoto"
+                /></a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Garantías</h5>
-                <p class="card-text">Seguimiento de tus garantías</p>
-                <a href="#" class="btn btn-success">Click aquí</a>
+                <p class="card-text">Seguimiento de todas las garantías</p>
               </div>
             </div>
           </div>
@@ -393,16 +350,17 @@
           >
             <div class="card" style="width: 18rem">
               <div>
-                <img
-                  th:src="@{/images/file.png}"
-                  class="setimg my-2"
-                  alt="userfoto"
-                />
+                <a href="#" class="btn btn-success">
+                  <img
+                    th:src="@{/images/file.png}"
+                    class="setimg my-2"
+                    alt="userfoto"
+                  />
+                </a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Reclamos</h5>
-                <p class="card-text">Inicia un reclamo</p>
-                <a href="#" class="btn btn-success">Click aquí</a>
+                <p class="card-text">Seguimiento de todos los reclamos</p>
               </div>
             </div>
           </div>

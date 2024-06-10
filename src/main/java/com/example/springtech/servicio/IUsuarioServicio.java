@@ -28,5 +28,7 @@ public interface IUsuarioServicio {
 	
 	
 	public Usuario actualizarUsuario(Usuario usuario);
+	
+	public Usuario buscarUsuarioPorCorreo(String correo);
 
 }

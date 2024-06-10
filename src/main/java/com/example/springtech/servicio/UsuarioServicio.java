@@ -105,6 +105,11 @@ public class UsuarioServicio implements IUsuarioServicio {
         }
     }
 
+	@Override
+	public Usuario buscarUsuarioPorCorreo(String correo) {
+		return usuarioRepositorio.findByCorreo(correo);
+	}
+
 
 
 

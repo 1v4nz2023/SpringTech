@@ -67,8 +67,10 @@ function mostrarModalEdicion(usuario) {
                           <input type="text" id="apellidos" name="apellidos" value="${usuario.apellidos}" class="form-control"><br>
                           <label for="correo">Correo:</label><br>
                           <input type="email" id="correo" name="correo" value="${usuario.correo}" class="form-control"><br>
-                          <label for="contraseña">Contraseña:</label><br>
-                          <input type="password" id="contraseña" name="contraseña" value="${usuario.password}" class="form-control"><br>
+                          <label for="contraseña">Contraseña actual:</label><br>
+                          <input type="password" id="contraseña" name="contraseña" value="" class="form-control"><br>
+                          <label for="contraseña">Contraseña nueva:</label><br>
+                          <input type="password" id="newcontraseña" name="newcontraseña" value="" class="form-control"><br>
                               <button type="submit" class="btn btn-success">Guardar Cambios</button>
                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                           </div>
@@ -89,6 +91,7 @@ function mostrarModalEdicion(usuario) {
       var apellidos = $("#apellidos").val().trim();
       var email = $("#correo").val().trim();
       var password = $("#contraseña").val().trim();
+      var newpassword = $("#newcontraseña").val().trim();
   
       const data = {
         nombre: nombres,
@@ -96,39 +99,55 @@ function mostrarModalEdicion(usuario) {
         correo: email,
         password: password,
         rol:"usuario",
+        newpassword:  newpassword,
       };
-      try {
-        const response = await axios.put(
-          `http://localhost:8090/api/usuarios/${usuario.idUsuario}`,
-          data
-        );
-        console.log("Usuario actualizado exitosamente:", response.data);
-        Swal.fire({
-          title: "Actualización exitosa",
-          text: "Usuario actualizado correctamente",
-          icon: "success",
-        }).then(() => {
-            localStorage.clear();
-          window.location.href="logout";
-      });
-      } catch (error) {
-        console.error(error);
-        if (error.response.status === 404) {
-          // Bad Request (dni o email duplicados)
+
+
+      if (nombres != "" && apellidos != "" && email != ""){
+        try {
+          const response = await axios.put(
+            `http://localhost:8090/api/usuarios/${usuario.idUsuario}`,
+            data
+          );
+          console.log("Usuario actualizado exitosamente:", response.data);
           Swal.fire({
-            title: "Error",
-            text: error.response.data.message,
-            icon: "error",
-          });
-        } else {
-          // Otro tipo de error
-          Swal.fire({
-            title: "Error",
-            text: "Ocurrió un error al procesar la solicitud",
-            icon: "error",
-          });
+            title: "Actualización exitosa",
+            text: "Usuario actualizado correctamente",
+            icon: "success",
+          }).then(() => {
+              localStorage.clear();
+            window.location.href="logout";
+        });
+        } catch (error) {
+          console.error(error);
+          if (error.response.status === 404) {
+            // Bad Request (dni o email duplicados)
+            Swal.fire({
+              title: "Error",
+              text: error.response.data.message,
+              icon: "error",
+            });
+          } else {
+            // Otro tipo de error
+            Swal.fire({
+              title: "Error",
+              text: "Ocurrió un error al procesar la solicitud",
+              icon: "error",
+            });
+          }
         }
       }
+
+      else{
+        Swal.fire({
+          title: "Error",
+          text: "Debe ingresar un nombre/apellido/correo",
+          icon: "error",
+        });
+      }
+
+
+
     });
   }
 

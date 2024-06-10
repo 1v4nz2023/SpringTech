@@ -260,6 +260,44 @@
         </div>
       </div>
 
+      <!-- Button trigger modal -->
+<a type="button" class="text text-danger text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  ¿Olvidaste tu contraseña?
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Restaura tu contraseña</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="reset-password-form">
+          <div class="mb-3">
+            <label for="email" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="new-password" class="form-label">Nueva contraseña</label>
+            <input type="password" class="form-control" id="new-password" name="new-password" required>
+          </div>
+          <div class="mb-3">
+            <label for="confirm-password" class="form-label">Confirmar nueva contraseña</label>
+            <input type="password" class="form-control" id="confirm-password" name="confirm-password" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success" onclick="submitResetPasswordForm()">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
       <div class="container-fluid mt-5">
         <h6>¿No tienes una cuenta con nosotros?</h6>
         <a th:href="@{/Registrar}" class="btn btn-dark">REGÍSTRATE AQUÍ</a>

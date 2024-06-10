@@ -137,7 +137,6 @@
       </div>
     </header>
 
-
     <div class="container-fluid d-flex bg-dark posicion">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -274,19 +273,18 @@
           >
             <div class="card" style="width: 18rem">
               <div>
-                <img
-                  th:src="@{/images/user.png}"
-                  class="setimg my-2"
-                  alt="userfoto"
-                />
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-success" id="editar">
+                  <img
+                    th:src="@{/images/user.png}"
+                    class="setimg my-2"
+                    alt="userfoto"
+                  />
+                </button>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Perfil</h5>
                 <p class="card-text">Edita tus datos personales</p>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-success" id="editar">
-                  Click aquí
-                </button>
 
                 <!-- Modal -->
                 <div
@@ -334,16 +332,16 @@
           >
             <div class="card" style="width: 18rem">
               <div>
-                <img
-                  th:src="@{/images/history.png}"
-                  class="setimg my-2"
-                  alt="userfoto"
-                />
+                <a href="#" class="btn btn-success">
+                  <img
+                    th:src="@{/images/history.png}"
+                    class="setimg my-2"
+                    alt="userfoto"
+                /></a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Historial</h5>
                 <p class="card-text">Revisa tus compras</p>
-                <a href="#" class="btn btn-success">Click aquí</a>
               </div>
             </div>
           </div>
@@ -355,16 +353,16 @@
           >
             <div class="card" style="width: 18rem">
               <div>
-                <img
-                  th:src="@{/images/warranty.png}"
-                  class="setimg my-2"
-                  alt="userfoto"
-                />
+                <a href="#" class="btn btn-success">
+                  <img
+                    th:src="@{/images/warranty.png}"
+                    class="setimg my-2"
+                    alt="userfoto"
+                /></a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Garantías</h5>
                 <p class="card-text">Seguimiento de tus garantías</p>
-                <a href="#" class="btn btn-success">Click aquí</a>
               </div>
             </div>
           </div>
@@ -374,16 +372,16 @@
           >
             <div class="card" style="width: 18rem">
               <div>
-                <img
-                  th:src="@{/images/file.png}"
-                  class="setimg my-2"
-                  alt="userfoto"
-                />
+                <a href="#" class="btn btn-success">
+                  <img
+                    th:src="@{/images/file.png}"
+                    class="setimg my-2"
+                    alt="userfoto"
+                /></a>
               </div>
               <div class="card-body">
                 <h5 class="card-title">Reclamos</h5>
                 <p class="card-text">Inicia un reclamo</p>
-                <a href="#" class="btn btn-success">Click aquí</a>
               </div>
             </div>
           </div>
@@ -482,8 +480,7 @@
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        </div>
+        <div class="modal-content"></div>
       </div>
     </div>
   </body>

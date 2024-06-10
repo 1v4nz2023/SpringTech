@@ -28,7 +28,7 @@ public class Usuario {
 	String correo;
 	String password;
 	String rol;
-	
+	String newpassword;
 	
     @OneToMany(mappedBy = "usuario")
     Set<Pedido> pedidos;
@@ -76,28 +76,13 @@ public class Usuario {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	public String getNewpassword() {
+		return newpassword;
+	}
+	public void setNewpassword(String newpassword) {
+		this.newpassword = newpassword;
+	}
+
 	
-    /*public String hashPassword(String password) {
-        try {
-            // Obtener instancia de MessageDigest con algoritmo SHA-256
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            // Convertir la contraseña a bytes
-            byte[] passwordBytes = password.getBytes();
-            // Generar el hash de la contraseña
-            byte[] hashBytes = md.digest(passwordBytes);
-            // Convertir el hash a una representación hexadecimal
-            BigInteger hashBigInteger = new BigInteger(1, hashBytes);
-            String hashedPassword = hashBigInteger.toString(16);
-            // Rellenar con ceros a la izquierda si es necesario
-            while (hashedPassword.length() < 64) {
-                hashedPassword = "0" + hashedPassword;
-            }
-            return hashedPassword;
-        } catch (NoSuchAlgorithmException e) {
-            // Manejo de la excepción
-            e.printStackTrace();
-            return null;
-        }
-    }*/
 
 }
