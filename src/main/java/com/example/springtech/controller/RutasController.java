@@ -180,7 +180,7 @@ public class RutasController {
         return "formulario-garantia";
     }
 
-    @GetMapping("/addProductos")
+    @GetMapping("/admin-crearProducto")
     public String addProductos(HttpServletRequest request, HttpServletResponse response,Model model) {
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("idUsuario") == null) {
@@ -189,7 +189,7 @@ public class RutasController {
         setupModelWithSessionAttributes(request, model);
         setNoCacheHeaders(response);
 
-        return "addProductos";
+        return "admin-crearProducto";
     }
 
     @GetMapping("/editProductos")
