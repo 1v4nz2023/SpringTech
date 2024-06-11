@@ -229,6 +229,9 @@ public class RutasController {
         return "crearCuenta";
     }
 
+    
+   
+    
     @GetMapping("/usuario")
     public String userPerfil(HttpServletRequest request,HttpServletResponse response, Model model) {
         if (!setupModelWithSessionAttributes(request, model, "usuario")) {

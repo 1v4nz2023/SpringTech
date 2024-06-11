@@ -22,6 +22,8 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer idUsuario;
+	
+	
 	String dni;
 	String nombre;
 	String apellidos;
