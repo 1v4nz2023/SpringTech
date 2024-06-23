@@ -5,54 +5,67 @@ document.getElementById('guardarBtn').addEventListener('click', function() {
     const precio = document.getElementById('precio').value;
     const stock = document.getElementById('stock').value;
     const descripcion = document.getElementById('descripcion').value;
-    const urlProducto = document.getElementById('urlProducto').value;
     const marca = document.getElementById('marca').value;
     const garantia = document.getElementById('garantia').value;
+    const imagenProducto = document.getElementById('imagenProducto').files[0];
 
-    // Crear objeto con los datos del formulario
-    const requestData = {
+    // Create FormData object
+    const formData = new FormData();
+    formData.append('producto', new Blob([JSON.stringify({
         nombreProducto: nombreProducto,
         partNumber: partNumber,
         categoria: categoria,
         precio: parseFloat(precio),
         stock: parseInt(stock),
         descripcion: descripcion,
-        url: urlProducto,
         marca: marca,
+        url:"temporal",
         garantia: garantia
-    };
+    })], { type: "application/json" }));
+    formData.append('imagen', imagenProducto);
 
-    // Enviar la solicitud POST al servidor usando Axios
-    axios.post('/api/productos', requestData)
-        .then(response => {
-            // Mostrar SweetAlert de éxito
+    // Send POST request using Fetch API
+    fetch('http://localhost:8090/upload/productos', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Handle the response from the server
+        console.log('Respuesta del servidor:', data);
+
+        if(data.status != 400 && data.status != 404){
             Swal.fire({
                 icon: 'success',
                 title: 'Éxito',
                 text: 'Producto guardado correctamente'
             }).then(() => {
-                // Limpiar los campos del formulario
-                document.getElementById('nombreProducto').value = '';
-                document.getElementById('partNumber').value = '';
-                document.getElementById('categoria').value = '';
-                document.getElementById('precio').value = '';
-                document.getElementById('stock').value = '';
-                document.getElementById('descripcion').value = '';
-                document.getElementById('urlProducto').value = '';
-                document.getElementById('marca').value = '';
-                document.getElementById('garantia').value = '';
+                // Clear the form fields
+                document.getElementById('productoForm').reset();
             });
-        })
-        .catch(error => {
-            // Mostrar SweetAlert de error
-            let errorMessage = 'Se produjo un error al procesar la solicitud';
-            if (error.response && error.response.data && error.response.data.message) {
-                errorMessage = error.response.data.message;
-            }
+        }
+
+        else{
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: errorMessage
+                text: data.message
             });
+        }
+
+
+    })
+    .catch(error => {
+        // Mostrar SweetAlert de error
+        let errorMessage = 'Se produjo un error al procesar la solicitud';
+        if (error.response && error.response.data && error.response.data.message) {
+            errorMessage = error.response.data.message;
+        }
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: errorMessage
         });
+    });
+
 });
