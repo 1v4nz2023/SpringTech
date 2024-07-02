@@ -105,6 +105,11 @@ public class ProductoServicio implements IProductoServicio{
 	}
 
 
+        @Override
+        public Productos buscarProductoporId(Integer idProducto) {
+                Productos producto = productoRepository.findById(idProducto).orElse(null);
+                return producto;
+        }
 
 	@Override
 	public Productos buscarPartNumberAndCategoria(String partNumber, String categoria) {
@@ -169,6 +174,13 @@ public class ProductoServicio implements IProductoServicio{
 
         return productosOrdenados;
 	}
+
+        @Override
+        public Productos actualizarProducto(Productos producto) {
+
+                return productoRepository.save(producto);
+        }
+
 
 
 

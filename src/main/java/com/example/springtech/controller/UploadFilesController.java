@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+
 @RestController
 @RequestMapping("/upload")
 public class UploadFilesController {
@@ -43,4 +44,44 @@ public class UploadFilesController {
         Productos savedProducto = productoServicio.guardarProducto(productos);
         return new ResponseEntity<>(savedProducto, HttpStatus.CREATED);
     }
+
+@PutMapping("/productos/{idProducto}")
+public ResponseEntity<Productos> actualizarProductos(@PathVariable Integer idProducto, 
+    @RequestPart("producto") Productos productoRecibido, 
+    @RequestPart(value = "imagen", required = false) MultipartFile file) throws Exception {
+
+    Productos producto = productoServicio.buscarProductoporId(idProducto);
+
+    if (producto == null) {
+        throw new RecursoNoEncontradoExcepcion("No se encontro el id:" + idProducto);
+    }
+
+    if (productoRecibido.getCategoria() == null || productoRecibido.getCategoria().isEmpty() ||
+    productoRecibido.getNombreProducto() == null || productoRecibido.getNombreProducto().isEmpty() ||
+    productoRecibido.getDescripcion() == null || productoRecibido.getDescripcion().isEmpty() ||
+    productoRecibido.getPartNumber() == null || productoRecibido.getPartNumber().isEmpty() ||
+    productoRecibido.getPrecio() == null || productoRecibido.getPrecio().isNaN() ||
+    productoRecibido.getStock() == null) {
+throw new RecursoNoEncontradoExcepcion("No se admiten espacios vacíos");
+}
+
+    producto.setNombreProducto(productoRecibido.getNombreProducto());
+    producto.setPartNumber(productoRecibido.getPartNumber());
+    producto.setCategoria(productoRecibido.getCategoria());
+    producto.setPrecio(productoRecibido.getPrecio());
+    producto.setStock(productoRecibido.getStock());
+    producto.setDescripcion(productoRecibido.getDescripcion());
+    producto.setMarca(productoRecibido.getMarca());
+    producto.setGarantia(productoRecibido.getGarantia());
+
+    // Verificar si el archivo no está vacío
+    if (file != null && !file.isEmpty()) {
+        String url = "http://localhost:8090/picture/" + uploadFilesService.handleFileUpload(file);
+        producto.setUrl(url);
+    }
+
+    productoServicio.actualizarProducto(producto);
+
+    return ResponseEntity.ok(producto);
+}
 }

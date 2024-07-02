@@ -9,7 +9,7 @@ document.getElementById('guardarBtn').addEventListener('click', function() {
     const garantia = document.getElementById('garantia').value;
     const imagenProducto = document.getElementById('imagenProducto').files[0];
 
-    // Create FormData object
+    // Creamos el objeto FormData
     const formData = new FormData();
     formData.append('producto', new Blob([JSON.stringify({
         nombreProducto: nombreProducto,
@@ -23,24 +23,26 @@ document.getElementById('guardarBtn').addEventListener('click', function() {
         garantia: garantia
     })], { type: "application/json" }));
     formData.append('imagen', imagenProducto);
+    
 
-    // Send POST request using Fetch API
+    // Enviamos al back via Fetch API
     fetch('http://localhost:8090/upload/productos', {
         method: 'POST',
         body: formData
     })
     .then(response => response.json())
     .then(data => {
-        // Handle the response from the server
+
+        // Manejamos las respuestas
         console.log('Respuesta del servidor:', data);
 
-        if(data.status != 400 && data.status != 404){
+        if(data.status != 400 && data.status != 404 && data.status != 500){
             Swal.fire({
                 icon: 'success',
                 title: 'Éxito',
                 text: 'Producto guardado correctamente'
             }).then(() => {
-                // Clear the form fields
+                // Limpiamos los campos
                 document.getElementById('productoForm').reset();
             });
         }

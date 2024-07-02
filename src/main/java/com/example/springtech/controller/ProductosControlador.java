@@ -109,7 +109,14 @@ public class ProductosControlador {
 			throw new RecursoNoEncontradoExcepcion("No se encontro el id:" + partNumber);
 		return ResponseEntity.ok(producto);
 	}
-	
+	@GetMapping("/producto/{idProducto}")
+	public ResponseEntity<Productos> obtenerProductoporId(@PathVariable Integer idProducto){
+		Productos producto = productoServicio.buscarProductoporId(idProducto);
+		
+		if(producto == null)
+			throw new RecursoNoEncontradoExcepcion("No se encontro el id:" + idProducto);
+		return ResponseEntity.ok(producto);
+	}
 	@GetMapping("/productos/pc/{partNumber}")
 	public ResponseEntity<Productos> filtrarProductoporCategoria(@PathVariable String partNumber) {
 	    Productos producto = productoServicio.buscarPartNumberAndCategoria(partNumber, "pc-oficina");

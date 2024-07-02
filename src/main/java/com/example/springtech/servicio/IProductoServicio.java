@@ -20,10 +20,15 @@ public interface IProductoServicio {
     int contarproducto();
     
     public Productos guardarProducto(Productos producto);
+
+    public Productos actualizarProducto(Productos producto);
     
     public boolean existeProductoConPn(String partNumber);
     
     public Productos buscarProductoporPartNumber(String partNumber);
+
+    public Productos buscarProductoporId(Integer idProducto);
+
     
     public Productos buscarPartNumberAndCategoria(String partNumber, String categoria);
 
