@@ -24,7 +24,7 @@ async function borrarProducto(idProducto) {
     if (producto) {
         try {
             const response = await axios.delete(
-                `http://localhost:8090/api/productos/${producto.idProducto}`
+                `http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/productos/${producto.idProducto}`
             );
             Swal.fire({
                 title: "Eliminación exitosa",
@@ -89,7 +89,7 @@ async function llenarTablaProductos() {
 }
 
 // URL de tu servidor Spring Boot
-const baseUrl = "http://localhost:8090";
+const baseUrl = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090";
 
 // Función para obtener la lista de productos
 async function obtenerProductos() {
@@ -236,7 +236,7 @@ function mostrarModalEdicion(producto) {
 
                 try {
                     const response = await axios.put(
-                        `http://localhost:8090/upload/productos/${producto.idProducto}`,
+                        `http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/upload/productos/${producto.idProducto}`,
                         formData
                     );
                     console.log("Producto actualizado exitosamente:", response.data);

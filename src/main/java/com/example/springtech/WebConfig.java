@@ -9,6 +9,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/picture/**")
-                .addResourceLocations("file:src/main/resources/picture/");
+                .addResourceLocations("file:/home/ec2-user/app/picture/"); // Ruta absoluta en tu instancia EC2
     }
 }

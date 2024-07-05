@@ -13,6 +13,9 @@ import java.util.UUID;
 @Service
 public class UploadFilesService implements IUploadFilesService {
 
+    // Ruta absoluta en tu instancia EC2
+    private final String uploadDir = "/home/ec2-user/app/picture/";
+
     @Override
     public String handleFileUpload(MultipartFile file) throws Exception {
         try {
@@ -28,19 +31,18 @@ public class UploadFilesService implements IUploadFilesService {
             }
 
             if (!fileOriginalName.endsWith(".jpg") && !fileOriginalName.endsWith(".jpeg") && !fileOriginalName.endsWith(".png")) {
-                throw new RecursoNoEncontradoExcepcion("Solo imagenes JPG, JPEG, PNG son permitidos");
+                throw new RecursoNoEncontradoExcepcion("Solo imágenes JPG, JPEG, PNG son permitidas");
             }
 
             String fileExtension = fileOriginalName.substring(fileOriginalName.lastIndexOf("."));
-
             String newFileName = fileName + fileExtension;
 
-            File folder = new File("src/main/resources/picture");
+            File folder = new File(uploadDir);
             if (!folder.exists()) {
                 folder.mkdirs();
             }
 
-            Path path = Paths.get("src/main/resources/picture/" + newFileName);
+            Path path = Paths.get(uploadDir + newFileName);
             Files.write(path, bytes);
             return newFileName;
 
