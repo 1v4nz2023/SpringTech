@@ -247,9 +247,9 @@ public class RutasController {
 
     @GetMapping("/admin")
     public String adminPerfil(HttpServletRequest request, HttpServletResponse response, Model model) {
-        //if (!setupModelWithSessionAttributes(request, model, "admin")) {
-           // return "redirect:/Login";
-       // }
+        if (!setupModelWithSessionAttributes(request, model, "admin")) {
+            return "redirect:/Login";
+        }
         
         setNoCacheHeaders(response);
 
