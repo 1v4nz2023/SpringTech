@@ -6,7 +6,7 @@ $(document).ready(function(){
     console.log(idUsuario);
 
     // URL de tu servidor Spring Boot
-const baseUrl = "http://localhost:8090";
+const baseUrl = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090";
 $(editar).click(function(){
 
    
@@ -117,7 +117,7 @@ function mostrarModalEdicion(usuario) {
         if (nombres != "" && apellidos != "" && email != ""){
           try {
             const response = await axios.put(
-              `http://localhost:8090/api/usuarios/${usuario.idUsuario}`,
+              `http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/usuarios/${usuario.idUsuario}`,
               data
             );
             console.log("Usuario actualizado exitosamente:", response.data);

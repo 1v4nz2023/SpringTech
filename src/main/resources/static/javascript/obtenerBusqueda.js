@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    if (window.location.href === "http://localhost:8090/buscar"){
-        window.location.href = "http://localhost:8090/buscar?nombreProducto="
+    if (window.location.href === "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/buscar"){
+        window.location.href = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/buscar?nombreProducto="
     }
   
 });
@@ -22,7 +22,7 @@ const buttons = document.getElementById("buttons");
 let mostrando = document.getElementById("mostrando");
 const urlactual = window.location.href;
 const nombreProducto = obtenerValorDespuesDelIgual(urlactual);
-let urlProducto = `http://localhost:8090/api/buscar?nombreProducto=${nombreProducto}`;
+let urlProducto = `http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/buscar?nombreProducto=${nombreProducto}`;
 let btnNext;
 let btnPrevious;
 let templateHtml;

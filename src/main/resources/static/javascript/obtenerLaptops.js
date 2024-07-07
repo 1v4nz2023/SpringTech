@@ -1,7 +1,7 @@
 const list_productos = document.getElementById("list_productos");
 const buttons = document.getElementById("buttons");
 let mostrando = document.getElementById("mostrando");
-let urlProducto = "http://localhost:8090/api/producto/laptops";
+let urlProducto = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/producto/laptops";
 let btnNext;
 let btnPrevious;
 let templateHtml;

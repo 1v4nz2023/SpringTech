@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  let urlProducto = "http://localhost:8090/api/productos/impresoras";
+  let urlProducto = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/productos/impresoras";
 
   // Obtener el contenedor donde se agregarán las tarjetas
   var impresoraContainer = $('#impresora-container');
@@ -74,12 +74,6 @@ $(document).ready(function () {
         impresoraContainer2.append($card2);
 
         }
-
-
-
-
-   
-
       
     } catch (error) {
       console.log(error);

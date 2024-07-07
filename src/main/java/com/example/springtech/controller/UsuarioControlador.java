@@ -31,9 +31,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
-//http://localhost:8090/api
 @RequestMapping("api")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = "http://localhost:8090")
+
 public class UsuarioControlador {
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioControlador.class);
 	

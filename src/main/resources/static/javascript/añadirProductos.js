@@ -26,7 +26,7 @@ document.getElementById('guardarBtn').addEventListener('click', function() {
     
 
     // Enviamos al back via Fetch API
-    fetch('http://localhost:8090/upload/productos', {
+    fetch('http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/upload/productos', {
         method: 'POST',
         body: formData
     })

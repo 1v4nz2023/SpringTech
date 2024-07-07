@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,6 +19,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:8090")
+
 public class RutasController {
 
     @Autowired
@@ -244,9 +247,9 @@ public class RutasController {
 
     @GetMapping("/admin")
     public String adminPerfil(HttpServletRequest request, HttpServletResponse response, Model model) {
-        if (!setupModelWithSessionAttributes(request, model, "admin")) {
-            return "redirect:/Login";
-        }
+        //if (!setupModelWithSessionAttributes(request, model, "admin")) {
+           // return "redirect:/Login";
+       // }
         
         setNoCacheHeaders(response);
 

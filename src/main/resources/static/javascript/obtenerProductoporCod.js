@@ -7,7 +7,7 @@ $(document).ready(function() {
             // Tu código existente para obtener el producto...
             const url = window.location.href;
             const partNumber = obtenerValorDespuesDelIgual(url);
-            const response = await fetch(`http://localhost:8090/api/productos/${partNumber}`);
+            const response = await fetch(`http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/productos/${partNumber}`);
             if (!response.ok) {
                 throw new Error(`No se pudo obtener el producto con número de parte ${partNumber}`);
             }
@@ -85,7 +85,6 @@ $(document).ready(function() {
 
         } catch (error) {
             console.error(error);
-            window.location.href = "/index";
         }       
     };
 
