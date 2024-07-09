@@ -291,7 +291,7 @@
     cartItems.forEach(item => {
         const quantity = parseInt(item.querySelector('.cart-item-quantity span').textContent);
         const priceText = item.querySelector('.cart-item-price').textContent;
-        // Extraer el valor numérico del texto del precio
+        // Extraer el valor numérico del texto del precio..
         const price = parseFloat(priceText.replace('$', '').replace(',', ''));
         totalPrice += quantity * price;
         totalQuantity += quantity;
