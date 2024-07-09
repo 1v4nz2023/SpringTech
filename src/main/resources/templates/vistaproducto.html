@@ -138,15 +138,11 @@
                   </ul>
                 </div>
               </div>
-
               <div class="login-container">
-                <a
-                  th:href="@{/Cart}"
-                  class="btn btn-light text-decoration-none"
-                >
+                <a id="cartButton" class="btn btn-light text-decoration-none">
                   <i class="fa-solid fa-cart-shopping icono">
-                    <span class="p-icono">$ 0.00</span></i
-                  >
+                    <span class="p-icono" id="carrito">$ 0.00</span>
+                  </i>
                 </a>
               </div>
             </div>
@@ -428,6 +424,7 @@
     <script src="../static/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../static/javascript/getandupdateUsuarios.js"></script>
+    <script th:src="@{/javascript/domnewproducts.js}"></script>
 
     <!-- <a th:href="@{/registro}">Registrar</a> -->
     <!-- <script th:src="@{/javascript/jquery-3.7.1.min.js}"></script>

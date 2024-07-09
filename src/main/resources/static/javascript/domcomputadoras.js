@@ -37,7 +37,7 @@ $(document).ready(function () {
                         <span>Marca: ${index.marca}</span>
                     </div>
                     <div class="d-flex align-items-center mx-2">
-                        <a href="#" class="btn btn-success product-text">Comprar</a>
+                    <a class="btn btn-success product-text addToCartButton" data-product='${JSON.stringify(index)}'>Comprar</a>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@ $(document).ready(function () {
                         <span>Marca: ${index2.marca}</span>
                     </div>
                     <div class="d-flex align-items-center mx-2">
-                        <a href="#" class="btn btn-success product-text">Comprar</a>
+                    <a class="btn btn-success product-text addToCartButton" data-product='${JSON.stringify(index2)}'>Comprar</a>
                     </div>
                 </div>
             </div>
