@@ -41,7 +41,6 @@ public class UsuarioControlador {
 	@Autowired
 	private IUsuarioServicio usuarioServicio;
 	
-	// http://localhost:8090/api/empleados
 	@GetMapping("/usuarios")
 	public List<Usuario> obtenerUsuarios(){
 		var usuarios = usuarioServicio.listarUsuarios();

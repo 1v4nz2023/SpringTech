@@ -10,7 +10,7 @@ function submitForm(event) {
   };
 
   axios
-    .post("http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/login", data)
+    .post("http://localhost:8090/api/login", data)
     .then((response) => {
       console.log(response);
 

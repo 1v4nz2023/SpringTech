@@ -49,8 +49,4 @@ async function resetPassword() {
             }
           }
     }
-
-
-
-
   }
