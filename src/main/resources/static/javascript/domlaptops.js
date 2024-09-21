@@ -1,5 +1,6 @@
+import { urlServer } from "./url.js";
 $(document).ready(function () {
-    let urlProducto = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/productos/laptops";
+    let urlProducto = `${urlServer}/api/productos/laptops`;
   
     // Obtener el contenedor donde se agregarán las tarjetas
     var laptopContainer = $('#laptop-container');

@@ -1,5 +1,7 @@
+import { urlServer } from "./url.js";
+
 $(document).ready(function () {
-    let urlProducto = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/productos/pc";
+    let urlProducto = `${urlServer}/api/productos/pc`;
   
     // Obtener el contenedor donde se agregarán las tarjetas
     var pcContainer = $('#pc-container');

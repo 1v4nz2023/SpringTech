@@ -21,7 +21,7 @@ async function resetPassword() {
         newPassword: newPassword,
       };
             const response = await axios.post(
-              `http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/reset-password`,
+              `${urlServer}/api/reset-password`,
               data
             );
             console.log("Contraseña restablecida exitosamente", response.data);

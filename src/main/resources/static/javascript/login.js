@@ -1,3 +1,5 @@
+import { urlServer } from "./url.js";
+
 function submitForm(event) {
   event.preventDefault();
 
@@ -10,7 +12,7 @@ function submitForm(event) {
   };
 
   axios
-    .post("http://localhost:8090/api/login", data)
+    .post(`${urlServer}/api/login`, data)
     .then((response) => {
       console.log(response);
 
@@ -38,3 +40,4 @@ function submitForm(event) {
       // Aquí puedes mostrar un mensaje de error al usuario o realizar otras acciones según sea necesario
     });
 }
+window.submitForm = submitForm;

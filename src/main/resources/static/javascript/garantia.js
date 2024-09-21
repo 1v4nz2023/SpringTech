@@ -1,3 +1,4 @@
+import { urlServer } from "./url.js";
 document.addEventListener('DOMContentLoaded', function () {
     const reporteForm = document.getElementById('reporteForm');
     // Validación de Nombre Completo (solo letras)

@@ -1,3 +1,4 @@
+import { urlServer } from "./url.js";
 $(document).ready(function() {
     let product = $('#product-section');
     let counter = 1; // Inicializar el contador
@@ -9,7 +10,7 @@ $(document).ready(function() {
         // Tu código existente para obtener el producto...
         const url = window.location.href;
         const partNumber = obtenerValorDespuesDelIgual(url);
-        const response = await fetch(`http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/productos/${partNumber}`);
+        const response = await fetch(`${urlServer}/api/productos/${partNumber}`);
         if (!response.ok) {
           throw new Error(`No se pudo obtener el producto con número de parte ${partNumber}`);
         }

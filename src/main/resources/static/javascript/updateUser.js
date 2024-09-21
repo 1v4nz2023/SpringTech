@@ -1,3 +1,5 @@
+import { urlServer } from "./url";
+
 $(document).ready(function(){
 
     let id = $('#idUsuario').text();
@@ -5,11 +7,7 @@ $(document).ready(function(){
 
     console.log(idUsuario);
 
-    // URL de tu servidor Spring Boot
-const baseUrl = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090";
 $(editar).click(function(){
-
-   
     editarUsuario(idUsuario);
 
 });
@@ -31,7 +29,7 @@ async function editarUsuario(idUsuario) {
 async function obtenerUsuarioPorId(id) {
   try {
     // Realizar una solicitud GET a la ruta /api/usuarios/{id}
-    const response = await axios.get(`${baseUrl}/api/usuarios/${id}`);
+    const response = await axios.get(`${urlServer}/api/usuarios/${id}`);
 
     // Devolver los datos de la respuesta
     return response.data;
@@ -117,7 +115,7 @@ function mostrarModalEdicion(usuario) {
         if (nombres != "" && apellidos != "" && email != ""){
           try {
             const response = await axios.put(
-              `http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/usuarios/${usuario.idUsuario}`,
+              `${urlServer}/api/usuarios/${usuario.idUsuario}`,
               data
             );
             console.log("Usuario actualizado exitosamente:", response.data);

@@ -1,3 +1,4 @@
+import { urlServer } from "./url.js";
 // Llenar la tabla de usuarios cuando la página se carga
 $(document).ready(function () {
   llenarTablaUsuarios();
@@ -24,7 +25,7 @@ async function borrarUsuario(idUsuario) {
     if (usuario) {
       try {
         const response = await axios.delete(
-          `http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/usuarios/${usuario.idUsuario}`
+          `${urlServer}/api/usuarios/${usuario.idUsuario}`
         );
         Swal.fire({
           title: "Eliminación exitosa",
@@ -90,14 +91,12 @@ async function llenarTablaUsuarios() {
   }
 }
 
-// URL de tu servidor Spring Boot
-const baseUrl = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090";
 
 // Función para obtener la lista de usuarios
 async function obtenerUsuarios() {
   try {
     // Realizar una solicitud GET a la ruta /api/usuarios
-    const response = await axios.get(`${baseUrl}/api/usuarios`);
+    const response = await axios.get(`${urlServer}/api/usuarios`);
 
     // Devolver los datos de la respuesta
     return response.data;
@@ -112,7 +111,7 @@ async function obtenerUsuarios() {
 async function obtenerUsuarioPorId(id) {
   try {
     // Realizar una solicitud GET a la ruta /api/usuarios/{id}
-    const response = await axios.get(`${baseUrl}/api/usuarios/${id}`);
+    const response = await axios.get(`${urlServer}/api/usuarios/${id}`);
 
     // Devolver los datos de la respuesta
     return response.data;
@@ -184,7 +183,7 @@ function mostrarModalEdicion(usuario) {
     };
     try {
       const response = await axios.put(
-        `http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/usuario/${usuario.idUsuario}`,
+        `${urlServer}/api/usuario/${usuario.idUsuario}`,
         data
       );
       console.log("Usuario actualizado exitosamente:", response.data);

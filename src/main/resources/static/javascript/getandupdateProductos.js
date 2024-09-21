@@ -1,3 +1,4 @@
+import { urlServer } from "./url.js";
 // Llenar la tabla de productos cuando la página se carga
 $(document).ready(function () {
     llenarTablaProductos();
@@ -24,7 +25,7 @@ async function borrarProducto(idProducto) {
     if (producto) {
         try {
             const response = await axios.delete(
-                `http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/api/productos/${producto.idProducto}`
+                `${urlServer}/api/productos/${producto.idProducto}`
             );
             Swal.fire({
                 title: "Eliminación exitosa",
@@ -88,14 +89,12 @@ async function llenarTablaProductos() {
     }
 }
 
-// URL de tu servidor Spring Boot
-const baseUrl = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090";
 
 // Función para obtener la lista de productos
 async function obtenerProductos() {
     try {
         // Realizar una solicitud GET a la ruta /api/productos
-        const response = await axios.get(`${baseUrl}/api/productos`);
+        const response = await axios.get(`${urlServer}/api/productos`);
 
         // Devolver los datos de la respuesta
         return response.data;
@@ -110,7 +109,7 @@ async function obtenerProductos() {
 async function obtenerProductoPorId(idProducto) {
     try {
         // Realizar una solicitud GET a la ruta /api/productos/{id}
-        const response = await axios.get(`${baseUrl}/api/producto/${idProducto}`);
+        const response = await axios.get(`${urlServer}/api/producto/${idProducto}`);
 
         // Devolver los datos de la respuesta
         return response.data;
@@ -236,7 +235,7 @@ function mostrarModalEdicion(producto) {
 
                 try {
                     const response = await axios.put(
-                        `http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/upload/productos/${producto.idProducto}`,
+                        `${urlServer}/upload/productos/${producto.idProducto}`,
                         formData
                     );
                     console.log("Producto actualizado exitosamente:", response.data);
