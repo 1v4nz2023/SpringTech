@@ -5,7 +5,7 @@ $(document).ready(function () {
 });
 
 // Función para manejar la edición de un producto
-async function editarProducto(idProducto) {
+export async function editarProducto(idProducto) {
     // Obtener los detalles del producto por su ID
     const producto = await obtenerProductoPorId(idProducto);
 
@@ -17,7 +17,7 @@ async function editarProducto(idProducto) {
 }
 
 // Función para manejar borrar un producto
-async function borrarProducto(idProducto) {
+export async function borrarProducto(idProducto) {
     // Obtener los detalles del producto por su ID
     const producto = await obtenerProductoPorId(idProducto);
 

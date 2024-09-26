@@ -1,3 +1,5 @@
+import { urlServer } from "./url.js";
+
 async function registrarUsuario() {
     var nombres = $("#nombres").val().trim();
     var apellidos = $("#apellidos").val().trim();

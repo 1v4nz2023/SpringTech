@@ -5,7 +5,7 @@ $(document).ready(function () {
 });
 
 // Función para manejar la edición de un usuario
-async function editarUsuario(idUsuario) {
+export async function editarUsuario(idUsuario) {
   // Obtener los detalles del usuario por su ID
   const usuario = await obtenerUsuarioPorId(idUsuario);
 
@@ -17,7 +17,7 @@ async function editarUsuario(idUsuario) {
 }
 
 // Función para manejar borrar un usuario
-async function borrarUsuario(idUsuario) {
+export async function borrarUsuario(idUsuario) {
     // Obtener los detalles del usuario por su ID
     const usuario = await obtenerUsuarioPorId(idUsuario);
   

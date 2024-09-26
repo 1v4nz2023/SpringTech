@@ -1,20 +1,31 @@
 package com.example.springtech.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.example.springtech.excepciones.RecursoNoEncontradoExcepcion;
 import com.example.springtech.modelo.Productos;
 import com.example.springtech.servicio.IUploadFilesService;
 import com.example.springtech.servicio.ProductoServicio;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
 @RequestMapping("/upload")
 @CrossOrigin(origins = "http://localhost:8090")
+
+
 public class UploadFilesController {
+
+    String urlServer = "http://localhost:8090";
 
     @Autowired
     IUploadFilesService uploadFilesService;
@@ -40,7 +51,7 @@ public class UploadFilesController {
 
         // Handle file upload and set URL
         String newFileName = uploadFilesService.handleFileUpload(file);
-        productos.setUrl("http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/picture/" + newFileName);
+        productos.setUrl(urlServer+"/picture/" + newFileName);
 
         Productos savedProducto = productoServicio.guardarProducto(productos);
         return new ResponseEntity<>(savedProducto, HttpStatus.CREATED);
@@ -77,7 +88,7 @@ public class UploadFilesController {
 
         // Verificar si el archivo no está vacío
         if (file != null && !file.isEmpty()) {
-            String url = "http://ec2-13-59-233-23.us-east-2.compute.amazonaws.com:8090/picture/" + uploadFilesService.handleFileUpload(file);
+            String url = urlServer+ "/picture/" + uploadFilesService.handleFileUpload(file);
             producto.setUrl(url);
         }
 

@@ -1,4 +1,4 @@
-import { urlServer } from "./url";
+import { urlServer } from "./url.js";
 
 $(document).ready(function(){
 

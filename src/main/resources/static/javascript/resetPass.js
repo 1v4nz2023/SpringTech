@@ -1,3 +1,5 @@
+import { urlServer } from "./url.js";
+
 async function resetPassword() {
     // Obtener los valores del formulario
     const email = document.getElementById('email').value;
