@@ -4,10 +4,9 @@ const buttons = document.getElementById("buttons");
 let mostrando = document.getElementById("mostrando");
 let urlProducto = `${urlServer}/api/producto/laptops`;
 let btnNext;
-let btnPrevious;
+let btnPrev; // Asegúrate de declarar btnPrev aquí
 let templateHtml;
 let start = 1;
-
 
 const getproductos = async (url) => {
   try {
@@ -32,7 +31,6 @@ getproductos(urlProducto);
 
 const Dataproductos = async (data) => {
   try {
-
     let container = document.createElement('div');
     container.classList.add('d-flex', 'flex-wrap', 'justify-content-center'); // Eliminar 'justify-content-center' para que los elementos no se centren horizontalmente
     let row = document.createElement('div');
@@ -47,10 +45,8 @@ const Dataproductos = async (data) => {
       }
 
       const index = data[i];
-      // Obtén la URL de la imagen local
-      // const imageUrl = `/images/${index.url}`; // Ajusta la ruta según tu estructura de archivos
       templateHtml = `
-        <div class="card col-md-3 col-6 mx-1 my-3 mx-3" style="width: 15rem"> <!-- Cambiar col-md-2 a col-md-3 para mostrar 4 elementos por fila -->
+        <div class="card col-md-3 col-6 mx-1 my-3 mx-3" style="width: 15rem">
           <a href="laptops/producto?id=${index.partNumber}"><img src="${index.url}" class="d-block w-100 card-img-top" alt="${index.name}" style="height: 150px;"></a>
           <h6 class="card-title mt-3">${index.nombreProducto}</h6>
 
@@ -66,14 +62,12 @@ const Dataproductos = async (data) => {
                   </div>
               </div>
           </div>
-      </div>
+        </div>
       `;
       row.innerHTML += templateHtml;
     }
 
-    // Agregar la última fila al contenedor
     container.appendChild(row);
-
     list_productos.innerHTML = ''; // Limpiar antes de agregar los nuevos elementos
     list_productos.appendChild(container);
 
@@ -81,7 +75,6 @@ const Dataproductos = async (data) => {
     console.log(error);
   }
 };
-
 
 buttons.addEventListener('click', (e) => {
   if (e.target.classList.contains('btn-success')) {
@@ -98,4 +91,3 @@ buttons.addEventListener('click', (e) => {
     getproductos(value);
   }
 });
-

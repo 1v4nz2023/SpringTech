@@ -4,7 +4,7 @@ const buttons = document.getElementById("buttons");
 let mostrando = document.getElementById("mostrando");
 let urlProducto = `${urlServer}/api/producto/pc-oficina`;
 let btnNext;
-let btnPrevious;
+let btnPrev;
 let templateHtml;
 let start = 1;
 

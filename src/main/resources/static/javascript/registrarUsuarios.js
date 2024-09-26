@@ -17,7 +17,7 @@ async function registrarUsuario() {
     };
 
     try {
-        const response = await axios.post("http://localhost:8090/api/usuarios", data);
+        const response = await axios.post(`${urlServer}/api/usuarios`, data);
         console.log("Usuario registrado exitosamente:", response.data);
         Swal.fire({
             title: "Registro exitoso",

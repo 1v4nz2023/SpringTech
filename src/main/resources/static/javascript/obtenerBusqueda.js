@@ -25,7 +25,7 @@ const urlactual = window.location.href;
 const nombreProducto = obtenerValorDespuesDelIgual(urlactual);
 let urlProducto = `${urlServer}/api/buscar?nombreProducto=${nombreProducto}`;
 let btnNext;
-let btnPrevious;
+let btnPrev;
 let templateHtml;
 let start = 1;
 const errorMessage = document.getElementById("error");
