@@ -20,12 +20,12 @@ import com.example.springtech.servicio.ProductoServicio;
 
 @RestController
 @RequestMapping("/upload")
-@CrossOrigin(origins = "http://localhost:8090")
+@CrossOrigin(origins = {"http://52.55.45.15", "http://localhost:8090"})
 
 
 public class UploadFilesController {
 
-    String urlServer = "http://localhost:8090";
+    String urlServer = "http://52.55.45.15";
 
     @Autowired
     IUploadFilesService uploadFilesService;

@@ -1,20 +1,21 @@
 package com.example.springtech.servicio;
 
-import com.example.springtech.excepciones.RecursoNoEncontradoExcepcion;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.example.springtech.excepciones.RecursoNoEncontradoExcepcion;
+
 @Service
 public class UploadFilesService implements IUploadFilesService {
 
     // Ruta absoluta en tu instancia EC2
-    private final String uploadDir = "/home/ec2-user/app/picture/";
+    private final String uploadDir = "/home/ubuntu/app/picture/";
 
     @Override
     public String handleFileUpload(MultipartFile file) throws Exception {

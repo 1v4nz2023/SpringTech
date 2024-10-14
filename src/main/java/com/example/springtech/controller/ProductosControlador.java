@@ -3,21 +3,28 @@ package com.example.springtech.controller;
 import java.util.Collections;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.example.springtech.servicio.IProductoServicio;
 import com.example.springtech.excepciones.RecursoNoEncontradoExcepcion;
 import com.example.springtech.modelo.Productos;
 import com.example.springtech.modelo.ProductosListResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.springtech.servicio.IProductoServicio;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin(origins = "http://localhost:8090")
+@CrossOrigin(origins = {"http://52.55.45.15", "http://localhost:8090"})
+
 public class ProductosControlador {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ProductosControlador.class);
@@ -48,7 +55,7 @@ public class ProductosControlador {
             productoesToShow = Collections.emptyList(); // Si el offset supera el total de productos, no se muestra ninguno
         }
 
-        String baseUrl = "http://localhost:8090/api/producto";
+        String baseUrl = "http://52.55.45.15/api/producto";
         String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
         String nextUrl = offset + limit < totalproducto ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
         
@@ -200,7 +207,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://localhost:8090/api/producto/pc-gamer";
+	    String baseUrl = "http://52.55.45.15/api/producto/pc-gamer";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -242,7 +249,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://localhost:8090/api/producto/pc-ingenieriadiseño";
+	    String baseUrl = "http://52.55.45.15/api/producto/pc-ingenieriadiseño";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -284,7 +291,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://localhost:8090/api/producto/pc-oficina";
+	    String baseUrl = "http://52.55.45.15/api/producto/pc-oficina";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -325,7 +332,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://localhost:8090/api/producto/laptops";
+	    String baseUrl = "http://52.55.45.15/api/producto/laptops";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -366,7 +373,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://localhost:8090/api/producto/impresoras";
+	    String baseUrl = "http://52.55.45.15/api/producto/impresoras";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -423,7 +430,7 @@ productosToShow = Collections.emptyList(); // Si el offset supera el total de pr
 }
 
 // URLs para la paginación
-String baseUrl = "http://localhost:8090/api/producto/impresoras";
+String baseUrl = "http://52.55.45.15/api/producto/impresoras";
 String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
