@@ -26,6 +26,7 @@ public class ProductoServicio implements IProductoServicio{
         // Ordenar la lista por ID de mayor a menor
         List<Productos> productosOrdenados = productos.stream()
                 .sorted(Comparator.comparingInt(Productos::getIdProducto).reversed())
+                .limit(10)
                 .collect(Collectors.toList());
 
         return productosOrdenados;
@@ -146,8 +147,8 @@ public class ProductoServicio implements IProductoServicio{
         // Ordenar la lista de productos por ID de mayor a menor
         pcCategorias.sort((p1, p2) -> p2.getIdProducto().compareTo(p1.getIdProducto()));
 
-        return pcCategorias;
-	}
+        return pcCategorias.size() > 10 ? pcCategorias.subList(0, 10) : pcCategorias;
+}
 
 
 	@Override
@@ -158,6 +159,7 @@ public class ProductoServicio implements IProductoServicio{
         // Ordenar la lista por ID de mayor a menor
         List<Productos> productosOrdenados = productos.stream()
                 .sorted(Comparator.comparingInt(Productos::getIdProducto).reversed())
+                .limit(10)
                 .collect(Collectors.toList());
 
         return productosOrdenados;	}
@@ -170,6 +172,7 @@ public class ProductoServicio implements IProductoServicio{
         // Ordenar la lista por ID de mayor a menor
         List<Productos> productosOrdenados = productos.stream()
                 .sorted(Comparator.comparingInt(Productos::getIdProducto).reversed())
+                .limit(10)
                 .collect(Collectors.toList());
 
         return productosOrdenados;

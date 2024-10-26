@@ -9,13 +9,11 @@ $(document).ready(function () {
   var newproductContainer2 = $("#newproduct-container2");
 
   let cart = JSON.parse(localStorage.getItem('cart')) || []; // Inicializa carrito desde localStorage si está disponible
-  let products = JSON.parse(localStorage.getItem('products')); // Verifica si los productos ya están almacenados
   const Dataproductos = async (data) => {
     try {
       for (let i = 0; i < 5; i++) {
         const index = data[i];
         const index2 = data[i + 5];
-        console.log(index);
         
         var cardHtml = `
           <div class="card col-md-3 col-6 mx-1 my-3 mx-1" style="width: 15rem">
@@ -188,29 +186,21 @@ $(document).ready(function () {
       renderCartItems();
       updateCartSummary();
 
-      const saveCartToLocalStorage = () => {
-        localStorage.setItem("cart", JSON.stringify(cart)); // Guardar carrito en localStorage
-      };
     } catch (error) {
       console.log(error);
     }
   };
+
   const getproductos = async (url) => {
-    if (products) {
-      console.log('Productos cargados desde localStorage');
-      Dataproductos(products); // Usa los productos almacenados si ya existen
-    } else {
+
       try {
         const response = await fetch(url);
         const results = await response.json();
-        console.log(results);
-        localStorage.setItem('products', JSON.stringify(results)); // Almacena los productos en localStorage
         Dataproductos(results);
       } catch (error) {
         console.error(error);
       }
     }
-  };
 
   getproductos(urlProducto);
 
