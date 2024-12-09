@@ -26,7 +26,6 @@ public class ProductoServicio implements IProductoServicio{
         // Ordenar la lista por ID de mayor a menor
         List<Productos> productosOrdenados = productos.stream()
                 .sorted(Comparator.comparingInt(Productos::getIdProducto).reversed())
-                .limit(10)
                 .collect(Collectors.toList());
 
         return productosOrdenados;
