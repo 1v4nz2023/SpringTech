@@ -1,4 +1,4 @@
 
-const urlServer = "http://localhost:8080"
+const urlServer = "https://proyectosawscertus2025.lat"
 
 export {urlServer};

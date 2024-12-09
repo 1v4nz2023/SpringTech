@@ -19,7 +19,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = {"https://proyectosawscertus2025.lat", "http://localhost:8080"})
+
 
 public class RutasController {
 
