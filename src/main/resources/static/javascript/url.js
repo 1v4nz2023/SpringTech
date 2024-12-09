@@ -1,4 +1,4 @@
 
-const urlServer = "https://proyectosawscertus2025.lat/java"
+const urlServer = "https://proyectosawscertus2025.lat"
 
 export {urlServer};

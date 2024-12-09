@@ -23,7 +23,7 @@ import com.example.springtech.servicio.IProductoServicio;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin(origins = {"http://52.55.45.15", "http://localhost:8090"})
+@CrossOrigin(origins = {"https://proyectosawscertus2025.lat", "http://localhost:8090"})
 
 public class ProductosControlador {
 	
@@ -55,7 +55,7 @@ public class ProductosControlador {
             productoesToShow = Collections.emptyList(); // Si el offset supera el total de productos, no se muestra ninguno
         }
 
-        String baseUrl = "http://52.55.45.15/api/producto";
+        String baseUrl = "https://proyectosawscertus2025.lat/api/producto";
         String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
         String nextUrl = offset + limit < totalproducto ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
         
@@ -207,7 +207,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://52.55.45.15/api/producto/pc-gamer";
+	    String baseUrl = "https://proyectosawscertus2025.lat/api/producto/pc-gamer";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -249,7 +249,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://52.55.45.15/api/producto/pc-ingenieriadiseño";
+	    String baseUrl = "https://proyectosawscertus2025.lat/api/producto/pc-ingenieriadiseño";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -291,7 +291,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://52.55.45.15/api/producto/pc-oficina";
+	    String baseUrl = "https://proyectosawscertus2025.lat/api/producto/pc-oficina";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -332,7 +332,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://52.55.45.15/api/producto/laptops";
+	    String baseUrl = "https://proyectosawscertus2025.lat/api/producto/laptops";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -373,7 +373,7 @@ public class ProductosControlador {
 	    }
 
 	    // URLs para la paginación
-	    String baseUrl = "http://52.55.45.15/api/producto/impresoras";
+	    String baseUrl = "https://proyectosawscertus2025.lat/api/producto/impresoras";
 	    String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 	    String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
@@ -430,7 +430,7 @@ productosToShow = Collections.emptyList(); // Si el offset supera el total de pr
 }
 
 // URLs para la paginación
-String baseUrl = "http://52.55.45.15/api/producto/impresoras";
+String baseUrl = "https://proyectosawscertus2025.lat/api/producto/impresoras";
 String previousUrl = offset - limit >= 0 ? baseUrl + "?offset=" + (offset - limit) + "&limit=" + limit : null;
 String nextUrl = offset + limit < totalProductos ? baseUrl + "?offset=" + (offset + limit) + "&limit=" + limit : null;
 
