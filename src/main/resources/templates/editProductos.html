@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="esp">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,20 +19,31 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" th:href="@{/css/style.css}" />
     <script
       src="https://kit.fontawesome.com/befcb3cdce.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""
     />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.6/css/dataTables.dataTables.css"
+    />
+    <link rel="stylesheet" th:href="@{/css/responsive.dataTables.min.css}" />
 
-    <title>SpringTech</title>
+    <title>SpringTech - Productos</title>
   </head>
+
   <body>
     <header id="top-page">
       <div class="container-fluid bg-success py-3">
@@ -128,7 +139,6 @@
                   </i>
                 </a>
               </div>
-              
             </div>
           </div>
         </div>
@@ -164,7 +174,7 @@
                 <a class="nav-link" th:href="@{/impresoras}">Impresoras</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" th:href="@{/garantía}">Garantía</a>
+                <a class="nav-link" th:href="@{/garantia}">Garantía</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" th:href="@{/metodos}">Métodos de pago</a>
@@ -256,221 +266,36 @@
       </div>
     </section>
 
-    <!-- NUEVOS PRODUCTOS -->
-    <section id="new-products">
-      <div class="container mt-5">
-        <div class="container d-flex justify-content-between">
-          <h2>Nuevos ingresos</h2>
-          <div>
-            <button
-              type="button"
-              class="btn btn-success rounded-circle"
-              data-bs-target="#carouselExampleControls"
-              data-bs-slide="prev"
-            >
-              <i class="fa-solid fa-angle-left"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-success rounded-circle"
-              data-bs-target="#carouselExampleControls"
-              data-bs-slide="next"
-            >
-              <i class="fa-solid fa-angle-right"></i>
-            </button>
-          </div>
-        </div>
-        <div
-          id="carouselExampleControls"
-          class="carousel slide"
-          data-bs-ride="carousel"
+    <section id="adminProductos">
+      <div class="container text-center">
+        <table
+          class="table table-striped table-hover display responsive nowrap"
+          id="myTable"
+          style="width: 100%"
         >
-          <div class="carousel-inner mt-4">
-            <div class="carousel-item active">
-              <div
-                class="row d-flex justify-content-center"
-                id="newproduct-container"
-              ></div>
-            </div>
-
-            <div class="carousel-item">
-              <div
-                class="row d-flex justify-content-center"
-                id="newproduct-container2"
-              ></div>
-            </div>
-          </div>
-        </div>
+          <thead class="table-success">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">STOCK</th>
+              <th scope="col">PREV</th>
+              <th scope="col">ACCIÓN</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
       </div>
-    </section>
 
-    <!-- COMPUTADORAS -->
-    <section id="computadoras">
-      <div class="container mt-5">
-        <div class="container d-flex justify-content-between">
-          <div>
-            <h2>Computadoras</h2>
-            <span
-              ><a
-                th:href="@{/computadoras}"
-                class="text-decoration-none seemore"
-                ><i class="fa-solid fa-eye"></i> Ver más</a
-              ></span
-            >
-          </div>
-
-          <div>
-            <button
-              type="button"
-              class="btn btn-success rounded-circle"
-              data-bs-target="#carouselExampleControls-computadoras"
-              data-bs-slide="prev"
-            >
-              <i class="fa-solid fa-angle-left"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-success rounded-circle"
-              data-bs-target="#carouselExampleControls-computadoras"
-              data-bs-slide="next"
-            >
-              <i class="fa-solid fa-angle-right"></i>
-            </button>
-          </div>
-        </div>
-        <div
-          id="carouselExampleControls-computadoras"
-          class="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-inner mt-4">
-            <div class="carousel-item active">
-              <div
-                class="row d-flex justify-content-center"
-                id="pc-container"
-              ></div>
-            </div>
-
-            <div class="carousel-item">
-              <div
-                class="row d-flex justify-content-center"
-                id="pc-container2"
-              ></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- LAPTOPS -->
-
-    <section id="laptops">
-      <div class="container mt-5">
-        <div class="container d-flex justify-content-between">
-          <div>
-            <h2>Laptops</h2>
-            <span
-              ><a th:href="@{/laptops}" class="text-decoration-none seemore"
-                ><i class="fa-solid fa-eye"></i> Ver más</a
-              ></span
-            >
-          </div>
-
-          <div>
-            <button
-              type="button"
-              class="btn btn-success rounded-circle"
-              data-bs-target="#carouselExampleControls-laptops"
-              data-bs-slide="prev"
-            >
-              <i class="fa-solid fa-angle-left"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-success rounded-circle"
-              data-bs-target="#carouselExampleControls-laptops"
-              data-bs-slide="next"
-            >
-              <i class="fa-solid fa-angle-right"></i>
-            </button>
-          </div>
-        </div>
-        <div
-          id="carouselExampleControls-laptops"
-          class="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-inner mt-4">
-            <div class="carousel-item active">
-              <div
-                class="row d-flex justify-content-center"
-                id="laptop-container"
-              ></div>
-            </div>
-
-            <div class="carousel-item">
-              <div
-                class="row d-flex justify-content-center"
-                id="laptop-container2"
-              ></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- IMPRESORAS -->
-
-    <section id="impresoras">
-      <div class="container mt-5">
-        <div class="container d-flex justify-content-between">
-          <div>
-            <h2>Impresoras</h2>
-            <span
-              ><a th:href="@{/impresoras}" class="text-decoration-none seemore"
-                ><i class="fa-solid fa-eye"></i> Ver más</a
-              ></span
-            >
-          </div>
-
-          <div>
-            <button
-              type="button"
-              class="btn btn-success rounded-circle"
-              data-bs-target="#carouselExampleControls-impresoras"
-              data-bs-slide="prev"
-            >
-              <i class="fa-solid fa-angle-left"></i>
-            </button>
-            <button
-              type="button"
-              class="btn btn-success rounded-circle"
-              data-bs-target="#carouselExampleControls-impresoras"
-              data-bs-slide="next"
-            >
-              <i class="fa-solid fa-angle-right"></i>
-            </button>
-          </div>
-        </div>
-        <div
-          id="carouselExampleControls-impresoras"
-          class="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-inner mt-4">
-            <div class="carousel-item active">
-              <div
-                class="row d-flex justify-content-center"
-                id="impresora-container"
-              ></div>
-            </div>
-            <div class="carousel-item">
-              <div
-                class="row d-flex justify-content-center"
-                id="impresora-container2"
-              ></div>
-            </div>
-          </div>
+      <div
+        id="modal-edicion"
+        class="modal fade"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content"></div>
         </div>
       </div>
     </section>
@@ -601,13 +426,17 @@
         </div>
       </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script th:src="@{/javascript/jquery-3.7.1.min.js}"></script>
-    <script th:src="@{/javascript/controladorEstilos.js}"></script>
-
-    <script type="module" th:src="@{/javascript/domnewproducts.js}"></script>
-    <script type="module" th:src="@{/javascript/domcomputadoras.js}"></script>
-    <script type="module" th:src="@{/javascript/domlaptops.js}"></script>
-    <script type="module" th:src="@{/javascript/domimpresoras.js}"></script>
+    <script src="https://cdn.datatables.net/2.0.6/js/dataTables.js"></script>
+    <script th:src="@{/js/dataTables.responsive.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module">
+      import { editarProducto, borrarProducto } from './javascript/getandupdateProductos.js';
+      
+      // Hacer las funciones accesibles en el ámbito global
+      window.editarProducto = editarProducto;
+      window.borrarProducto = borrarProducto;
+    </script>
   </body>
 </html>
