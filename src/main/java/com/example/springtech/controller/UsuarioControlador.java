@@ -32,7 +32,7 @@ import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin(origins = "http://localhost:8090")
+@CrossOrigin(origins = "http://localhost:8080")
 
 public class UsuarioControlador {
 	private static final Logger logger = LoggerFactory.getLogger(UsuarioControlador.class);

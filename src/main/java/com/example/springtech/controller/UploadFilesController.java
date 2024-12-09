@@ -20,7 +20,7 @@ import com.example.springtech.servicio.ProductoServicio;
 
 @RestController
 @RequestMapping("/upload")
-@CrossOrigin(origins = {"https://proyectosawscertus2025.lat", "http://localhost:8090"})
+@CrossOrigin(origins = {"https://proyectosawscertus2025.lat", "http://localhost:8080"})
 
 
 public class UploadFilesController {

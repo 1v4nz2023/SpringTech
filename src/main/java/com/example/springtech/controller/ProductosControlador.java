@@ -23,7 +23,7 @@ import com.example.springtech.servicio.IProductoServicio;
 
 @RestController
 @RequestMapping("api")
-@CrossOrigin(origins = {"https://proyectosawscertus2025.lat", "http://localhost:8090"})
+@CrossOrigin(origins = {"https://proyectosawscertus2025.lat", "http://localhost:8080"})
 
 public class ProductosControlador {
 	
